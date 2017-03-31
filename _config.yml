@@ -6,7 +6,7 @@
 title: 博博博客
 subtitle: 念曲的个人博客
 description: 一个彩笔的博客
-author: zengdonghai
+author: 念曲
 language: zh-Hans
 timezone: Asia/Shanghai
 
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
