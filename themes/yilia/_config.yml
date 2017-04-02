@@ -2,14 +2,14 @@
 
 menu:
   主页: /
-  随笔: /tags/随笔/
+  # 随笔: /tags/随笔/
 
 # SubNav
 subnav:
-  github: "#"
-  weibo: "#"
-  rss: "#"
-  zhihu: "#"
+  # github: "#"
+  weibo: "http://weibo.com/readsongzdh"
+  # rss: "#"
+  # zhihu: "#"
   #qq: "#"
   #weixin: "#"
   #jianshu: "#"
@@ -59,7 +59,7 @@ google_analytics: ''
 favicon: /favicon.png
 
 #你的头像url
-avatar: https://ooo.0o0.ooo/2017/03/31/58de6bec15e9c.jpeg
+avatar: /img/td.jpg
 
 #是否开启分享
 share_jia: true
@@ -93,4 +93,6 @@ smart_menu:
 friends:
   一个博客: https://ablog.blog/
 
-aboutme: 很惭愧<br><br>只做了一点微小的工作<br>谢谢大家
+aboutme: 毕业于温职，<br>前端小菜鸟<br><br>黑灯瞎火中，<br>不断摸索与前行<br><br>心怀不惧，<br>方能翱翔于天际
+
+
