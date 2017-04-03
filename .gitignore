@@ -5,5 +5,5 @@ db.json
 node_modules/
 /public/*
 !/public/content.json
-!/public/blog-img/*
+!/public/blog-img
 .deploy*/
