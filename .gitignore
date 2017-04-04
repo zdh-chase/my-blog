@@ -3,7 +3,4 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-/public/*
-!/public/content.json
-!/public/blog-img
 .deploy*/
