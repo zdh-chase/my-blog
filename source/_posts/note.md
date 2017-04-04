@@ -93,10 +93,10 @@ define(function(require, exports, module) {
 ``` bash
 seajs.use(["index"]); //引入index.js
 ```
-<img src="/blog-img/img1.png" />
+<img src="/img/img1.png" />
 
 这里可以看到index.js中成功引入了a.js和b.js的方法，再看一下Network
-<img src="/blog-img/img2.png" />
+<img src="/img/img2.png" />
 这边加载了三个js文件，这并不符合我的需求，我希望我引入某个js文件的方法时，只需要加载那个方法，而不是整个js文件都加载进来，所以我需要合并js，添加一个gulp task任务
 ``` bash
 gulp.task('mergeScripts',function () {
@@ -113,13 +113,13 @@ gulp.task('mergeScripts',function () {
 ``` bash
 gulp mergeScripts 
 ```
-<img src="/blog-img/img3.png" />
+<img src="/img/img3.png" />
 合并是合并了，但是还是加载了三个js
 这里需要引入gulp-seajs-transport来具象化js模块
 ```javascript
 var transport = require('gulp-seajs-transport');
 .pipe(transport());
 ```
-<img src="/blog-img/img4.png" />
+<img src="/img/img4.png" />
 完成，既加载了我所需要的方法，又减少了http请求
 over
