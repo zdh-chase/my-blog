@@ -54,9 +54,11 @@ gulp.task('watch', function() {
 再新建一个task
 ``` bash
 gulp.task('html', function() {
-    gulp.src('./build/view/*.html')//这里的路径时生产文件的路径
-        .pipe(connect.reload())
+    return gulp.src('./build/view/*.html')//这里的路径时生产文件的路径
+        .pipe(connect.reload());
 });
+
+注：task里要加return，不加return，task和里面的gulp流是异步执行的。
 ```
 将它放入watch中
 ``` bash
@@ -69,6 +71,31 @@ gulp.watch(paths.scss,['mergeScss','html']);
 
 ``` bash
 gulp.task('service', ['connect', 'watch']);
+```
+
+## http-proxy-middleware 代理跨域
+
+``` bash
+gulp.task('proxy', function() {
+    connect.server({
+        root: ['./'],
+        port: 3000,
+        livereload: true,
+        middleware: function(connect, opt) {
+            return [
+                proxy('/api',  {
+                    target: 'http://localhost:8080',
+                    changeOrigin:true
+                }),
+                proxy('/otherServer', {
+                    target: 'http://IP:Port',
+                    changeOrigin:true
+                })
+            ]
+        }
+
+    });
+});
 ```
 
 over
