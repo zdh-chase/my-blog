@@ -1,5 +1,5 @@
 ---
-title: Gulp 配置（四）---图片篇
+title: Gulp 配置（五）---图片篇
 tags:
      - base64
      - spriter
