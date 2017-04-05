@@ -4,6 +4,7 @@ tags:
      - gulp
      - css
      - sass
+     - px3rem
 ---
 sass、less、stylus都是css预处理框架，它可以提高开发效率，编写富有表现力的、动态的、健壮的CSS。
 
@@ -109,4 +110,22 @@ gulp.task('scssrev',['mergeScss'],function() {
 });
 ```
 最后这些编译后的css文件会以*.css?v={time}的形式引入，解决浏览器缓存机制。
+
+## gulp-px3rem
+
+px单位转换成rem
+``` bash
+.pipe(px2rem())
+
+px2rem({
+  baseDpr: 2,             // 基本设备像素比（默认值：2）
+  threeVersion: false,    // 是否产生“1X，2X和@ @ 3x版本（默认：false）
+  remVersion: true,       // 是否生成rem版本（默认值：true）
+  remUnit: 75,            // 转化基值（默认：75）
+  remPrecision: 6         // rem 精确度 (默认: 6)
+})
+```
+默认生成的css文件名格式为*.debug.css，去掉debug可以在对应的node_modules里面的index.js修改正则表达式，去掉debug就可以了。
+
+
 over

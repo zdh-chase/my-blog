@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Gulp 配置（四）---模板篇 | 博博博客</title>
+  <title>Tag: px3rem | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Gulp 配置（四）---模板篇">
-<meta property="og:url" content="http://zengdh.com/2017/04/03/note4/index.html">
+  <meta name="description" content="一个彩笔的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="博博博客">
+<meta property="og:url" content="http://zengdh.com/tags/px3rem/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
-<meta property="og:updated_time" content="2017-04-03T07:31:00.110Z">
+<meta property="og:description" content="一个彩笔的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gulp 配置（四）---模板篇">
-<meta name="twitter:description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
+<meta name="twitter:title" content="博博博客">
+<meta name="twitter:description" content="一个彩笔的博客">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -142,65 +138,36 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-note4" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Gulp 配置（四）---模板篇
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/04/03/note2/" class="archive-article-date">
+  	<time datetime="2017-04-03T05:53:17.480Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/03/note2/">Gulp 配置（二）---sass篇</a>
     </h1>
   
 
-        
-        <a href="/2017/04/03/note4/" class="archive-article-date">
-  	<time datetime="2017-04-03T07:19:46.802Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
-<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
-<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>over</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -210,103 +177,33 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/04/03/note4/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/04/04/note5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Gulp 配置（五）---图片篇
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/04/03/note3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Gulp 配置（三）---service篇</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -329,9 +226,9 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

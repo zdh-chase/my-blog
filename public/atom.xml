@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zengdh.com/"/>
-  <updated>2017-04-04T07:48:41.450Z</updated>
+  <updated>2017-04-05T04:29:14.754Z</updated>
   <id>http://zengdh.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git日常提交步骤-基本命令行</title>
+    <link href="http://zengdh.com/2017/04/05/note6/"/>
+    <id>http://zengdh.com/2017/04/05/note6/</id>
+    <published>2017-04-05T04:18:47.962Z</published>
+    <updated>2017-04-05T04:29:14.754Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>注解：<br>1)   -b dev   指定想要下载的分支，去掉省略的话下载的是默认分支是master（注：默认分支可以修改）<br>2)   xxxx_dev_local是我想要在本地创建的git库文件夹名字，去掉省略的话下载好的git库名字是xxxx git库的名字，建议使用这种重命名方式</p>
+<h2 id="2-更新代码"><a href="#2-更新代码" class="headerlink" title="2.更新代码"></a>2.更新代码</h2><p>注：每次修改前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<h2 id="3-修改、增加或删除代码文件到git-index缓存中"><a href="#3-修改、增加或删除代码文件到git-index缓存中" class="headerlink" title="3.修改、增加或删除代码文件到git index缓存中"></a>3.修改、增加或删除代码文件到git index缓存中</h2><p>修改或新增加代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add file_name</div></pre></td></tr></table></figure></p>
+<p>删除代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm file_name</div></pre></td></tr></table></figure></p>
+<h2 id="4-提交本地git库index缓存中的修改"><a href="#4-提交本地git库index缓存中的修改" class="headerlink" title="4.提交本地git库index缓存中的修改"></a>4.提交本地git库index缓存中的修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –m “just a <span class="built_in">test</span> <span class="keyword">for</span> commit ”</div></pre></td></tr></table></figure>
+<p>如果本地修改不对或commit的LOG需要修改可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –-amend //修复上一次提交，不要修改Merge提交</div></pre></td></tr></table></figure></p>
+<p>##5.更新代码<br>注：每次push前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<p>##6.推送提交到服务器上的git库中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>注：默认会推送到我们下载git库时的-b 后面加的那个分支，没有加默认是master，这个命令完整版实际上是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 当前分支名:我们下载的分支名</div></pre></td></tr></table></figure></p>
+<p>##7.解消代码冲突<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge xxxx_branch 或者 git pull 时 or</div><div class="line">git rebase xxxx_branch 或者 git pull --rebase 时</div></pre></td></tr></table></figure></p>
+<p>解消方法也是修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-下载代码&quot;&gt;&lt;a href=&quot;#1-下载代码&quot; class=&quot;headerlink&quot; title=&quot;1.下载代码&quot;&gt;&lt;/a&gt;1.下载代码&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; http//xxxx.git –b dev xxxx_dev_local&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://zengdh.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Gulp 配置（五）---图片篇</title>
@@ -130,7 +166,7 @@
     <link href="http://zengdh.com/2017/04/03/note2/"/>
     <id>http://zengdh.com/2017/04/03/note2/</id>
     <published>2017-04-03T05:53:17.480Z</published>
-    <updated>2017-04-03T06:51:26.621Z</updated>
+    <updated>2017-04-05T04:18:24.996Z</updated>
     
     <content type="html"><![CDATA[<p>sass、less、stylus都是css预处理框架，它可以提高开发效率，编写富有表现力的、动态的、健壮的CSS。</p>
 <ul>
@@ -153,7 +189,10 @@
 <h2 id="路径替换"><a href="#路径替换" class="headerlink" title="路径替换"></a>路径替换</h2><p>引入依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var revCollector = require(<span class="string">'gulp-rev-collector'</span>);</div></pre></td></tr></table></figure></p>
 <p>gulp task</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'scssrev'</span>,[<span class="string">'mergeScss'</span>],<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  <span class="built_in">return</span> gulp.src( [<span class="string">'./rev/*.json'</span>,<span class="string">'./build/view/*.html'</span>])                                    //- 读取 rev-manifest.json 文件以及需要进行css名替换的文件</div><div class="line">               .pipe(revCollector(</div><div class="line">                   &#123;</div><div class="line">                    replaceReved: <span class="literal">true</span></div><div class="line">                    /*dirReplacements: &#123;//指定路径替换</div><div class="line">                        <span class="string">'/static/scss'</span>: <span class="string">'/build/scss'</span></div><div class="line">                    &#125;*/</div><div class="line">                   &#125;</div><div class="line">                ))                                   //- 执行文件内css名的替换</div><div class="line">               .pipe(gulp.dest(<span class="string">"./build/view/"</span>));                   //- 替换后的文件输出的目录    </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>最后这些编译后的css文件会以*.css?v={time}的形式引入，解决浏览器缓存机制。<br>over</p>
+<p>最后这些编译后的css文件会以*.css?v={time}的形式引入，解决浏览器缓存机制。</p>
+<h2 id="gulp-px3rem"><a href="#gulp-px3rem" class="headerlink" title="gulp-px3rem"></a>gulp-px3rem</h2><p>px单位转换成rem<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.pipe(px2rem())</div><div class="line"></div><div class="line">px2rem(&#123;</div><div class="line">  baseDpr: 2,             // 基本设备像素比（默认值：2）</div><div class="line">  threeVersion: <span class="literal">false</span>,    // 是否产生“1X，2X和@ @ 3x版本（默认：<span class="literal">false</span>）</div><div class="line">  remVersion: <span class="literal">true</span>,       // 是否生成rem版本（默认值：<span class="literal">true</span>）</div><div class="line">  remUnit: 75,            // 转化基值（默认：75）</div><div class="line">  remPrecision: 6         // rem 精确度 (默认: 6)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>默认生成的css文件名格式为*.debug.css，去掉debug可以在对应的node_modules里面的index.js修改正则表达式，去掉debug就可以了。</p>
+<p>over</p>
 ]]></content>
     
     <summary type="html">
@@ -172,6 +211,8 @@
       <category term="css" scheme="http://zengdh.com/tags/css/"/>
     
       <category term="sass" scheme="http://zengdh.com/tags/sass/"/>
+    
+      <category term="px3rem" scheme="http://zengdh.com/tags/px3rem/"/>
     
   </entry>
   

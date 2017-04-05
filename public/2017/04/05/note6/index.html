@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Gulp 配置（四）---模板篇 | 博博博客</title>
+  <title>git日常提交步骤-基本命令行 | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
+  <meta name="description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gulp 配置（四）---模板篇">
-<meta property="og:url" content="http://zengdh.com/2017/04/03/note4/index.html">
+<meta property="og:title" content="git日常提交步骤-基本命令行">
+<meta property="og:url" content="http://zengdh.com/2017/04/05/note6/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
-<meta property="og:updated_time" content="2017-04-03T07:31:00.110Z">
+<meta property="og:description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
+<meta property="og:updated_time" content="2017-04-05T04:29:14.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gulp 配置（四）---模板篇">
-<meta name="twitter:description" content="提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。
-gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-file-include&apos;);">
+<meta name="twitter:title" content="git日常提交步骤-基本命令行">
+<meta name="twitter:description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -142,35 +139,41 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-note4" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-note6" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Gulp 配置（四）---模板篇
+      git日常提交步骤-基本命令行
     </h1>
   
 
         
-        <a href="/2017/04/03/note4/" class="archive-article-date">
-  	<time datetime="2017-04-03T07:19:46.802Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-03</time>
+        <a href="/2017/04/05/note6/" class="archive-article-date">
+  	<time datetime="2017-04-05T04:18:47.962Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
-<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
+        <h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
-<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>注解：<br>1)   -b dev   指定想要下载的分支，去掉省略的话下载的是默认分支是master（注：默认分支可以修改）<br>2)   xxxx_dev_local是我想要在本地创建的git库文件夹名字，去掉省略的话下载好的git库名字是xxxx git库的名字，建议使用这种重命名方式</p>
+<h2 id="2-更新代码"><a href="#2-更新代码" class="headerlink" title="2.更新代码"></a>2.更新代码</h2><p>注：每次修改前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<h2 id="3-修改、增加或删除代码文件到git-index缓存中"><a href="#3-修改、增加或删除代码文件到git-index缓存中" class="headerlink" title="3.修改、增加或删除代码文件到git index缓存中"></a>3.修改、增加或删除代码文件到git index缓存中</h2><p>修改或新增加代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add file_name</div></pre></td></tr></table></figure></p>
+<p>删除代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm file_name</div></pre></td></tr></table></figure></p>
+<h2 id="4-提交本地git库index缓存中的修改"><a href="#4-提交本地git库index缓存中的修改" class="headerlink" title="4.提交本地git库index缓存中的修改"></a>4.提交本地git库index缓存中的修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –m “just a <span class="built_in">test</span> <span class="keyword">for</span> commit ”</div></pre></td></tr></table></figure>
+<p>如果本地修改不对或commit的LOG需要修改可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –-amend //修复上一次提交，不要修改Merge提交</div></pre></td></tr></table></figure></p>
+<p>##5.更新代码<br>注：每次push前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<p>##6.推送提交到服务器上的git库中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>注：默认会推送到我们下载git库时的-b 后面加的那个分支，没有加默认是master，这个命令完整版实际上是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 当前分支名:我们下载的分支名</div></pre></td></tr></table></figure></p>
+<p>##7.解消代码冲突<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge xxxx_branch 或者 git pull 时 or</div><div class="line">git rebase xxxx_branch 或者 git pull --rebase 时</div></pre></td></tr></table></figure></p>
+<p>解消方法也是修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
 <p>over</p>
 
       
@@ -206,11 +209,7 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -266,7 +265,7 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/04/03/note4/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/04/05/note6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +279,9 @@ gulp-file-include需要引入的依赖1var fileinclude  = require(&apos;gulp-fil
   
 <nav id="article-nav">
   
-    <a href="/2017/04/04/note5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Gulp 配置（五）---图片篇
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/03/note3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Gulp 配置（三）---service篇</div>
+    <a href="/2017/04/04/note5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gulp 配置（五）---图片篇</div>
       <i class="icon-circle-right"></i>
     </a>
   
