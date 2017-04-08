@@ -6,7 +6,7 @@ menu:
 
 # SubNav
 subnav:
-  # github: "#"
+  github: "https://github.com/zdh-chase"
   # weibo: "http://weibo.com/readsongzdh"
   rss: "/atom.xml"
   # zhihu: "#"
