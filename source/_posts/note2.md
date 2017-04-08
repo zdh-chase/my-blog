@@ -87,6 +87,19 @@ if ( !_.isString(json[key]) || path.basename(json[key]).replace(new RegExp( opts
 ``` bash
 if ( path.basename(json[key]).split('?')[0] !== path.basename(key) ) {
 ```
+
+第46行：
+``` bash
+return pattern.replace(/[\-\[\]\{\}\(\)\*\+\?\.\^\$\|\/\\]/g, "\\$&");
+```
+更新为：
+``` bash
+var rp = pattern.replace(/[\-\[\]\{\}\(\)\*\+\?\.\^\$\|\/\\]/g, "\\$&");
+rp = pattern + "(\\?v=(\\d|[a-z]){8,10})*"; //匹配md5
+//rp = pattern + "(\\?v=(\\d{13}))*"; 匹配后缀为毫秒戳
+return rp;
+```
+
 ## 路径替换
 
 引入依赖

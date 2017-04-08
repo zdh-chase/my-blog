@@ -77,7 +77,7 @@ background-image:url(../img/x.png?__spriter);//有?__spriter后缀的合并
 background-image:url(../img/y.png);//不合并
 ```
 修改gulp-css-spriter源文件
-
+进入 node_modules\gulp-css-spriter\lib\map-over-styles-and-transform-background-image-declarations.js
 第43行：
 ``` bash
 if(transformedDeclaration.property === 'background-image') {
