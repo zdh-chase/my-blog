@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zengdh.com/"/>
-  <updated>2017-04-08T07:54:22.841Z</updated>
+  <updated>2017-05-25T02:50:44.877Z</updated>
   <id>http://zengdh.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>前后端分离实践-gulp+express</title>
-    <link href="http://zengdh.com/2017/04/08/note7/"/>
-    <id>http://zengdh.com/2017/04/08/note7/</id>
-    <published>2017-04-08T07:15:26.225Z</published>
-    <updated>2017-04-08T07:54:22.841Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note7/"/>
+    <id>http://zengdh.com/2017/05/25/note7/</id>
+    <published>2017-05-25T02:50:44.877Z</published>
+    <updated>2017-05-25T02:50:44.877Z</updated>
     
     <content type="html"><![CDATA[<h2 id="技术栈：gulp-express-browser-sync-seajs-sass-ejs"><a href="#技术栈：gulp-express-browser-sync-seajs-sass-ejs" class="headerlink" title="技术栈：gulp+express+browser-sync+seajs+sass+ejs"></a>技术栈：gulp+express+browser-sync+seajs+sass+ejs</h2><p>1.前端打包工具：gulp<br>2.express 做中间件和路由配置<br>3.browser-sync 浏览器自动刷新<br>4.seajs 模块化管理js<br>5.sass css预编译<br>6.ejs 模板引擎</p>
 <a id="more"></a>
@@ -68,47 +68,11 @@
   </entry>
   
   <entry>
-    <title>git日常提交步骤-基本命令行</title>
-    <link href="http://zengdh.com/2017/04/05/note6/"/>
-    <id>http://zengdh.com/2017/04/05/note6/</id>
-    <published>2017-04-05T04:18:47.962Z</published>
-    <updated>2017-04-05T04:29:14.754Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>注解：<br>1)   -b dev   指定想要下载的分支，去掉省略的话下载的是默认分支是master（注：默认分支可以修改）<br>2)   xxxx_dev_local是我想要在本地创建的git库文件夹名字，去掉省略的话下载好的git库名字是xxxx git库的名字，建议使用这种重命名方式</p>
-<h2 id="2-更新代码"><a href="#2-更新代码" class="headerlink" title="2.更新代码"></a>2.更新代码</h2><p>注：每次修改前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
-<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<h2 id="3-修改、增加或删除代码文件到git-index缓存中"><a href="#3-修改、增加或删除代码文件到git-index缓存中" class="headerlink" title="3.修改、增加或删除代码文件到git index缓存中"></a>3.修改、增加或删除代码文件到git index缓存中</h2><p>修改或新增加代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add file_name</div></pre></td></tr></table></figure></p>
-<p>删除代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm file_name</div></pre></td></tr></table></figure></p>
-<h2 id="4-提交本地git库index缓存中的修改"><a href="#4-提交本地git库index缓存中的修改" class="headerlink" title="4.提交本地git库index缓存中的修改"></a>4.提交本地git库index缓存中的修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –m “just a <span class="built_in">test</span> <span class="keyword">for</span> commit ”</div></pre></td></tr></table></figure>
-<p>如果本地修改不对或commit的LOG需要修改可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –-amend //修复上一次提交，不要修改Merge提交</div></pre></td></tr></table></figure></p>
-<p>##5.更新代码<br>注：每次push前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
-<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<p>##6.推送提交到服务器上的git库中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
-<p>注：默认会推送到我们下载git库时的-b 后面加的那个分支，没有加默认是master，这个命令完整版实际上是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 当前分支名:我们下载的分支名</div></pre></td></tr></table></figure></p>
-<p>##7.解消代码冲突<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge xxxx_branch 或者 git pull 时 or</div><div class="line">git rebase xxxx_branch 或者 git pull --rebase 时</div></pre></td></tr></table></figure></p>
-<p>解消方法也是修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<p>over</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-下载代码&quot;&gt;&lt;a href=&quot;#1-下载代码&quot; class=&quot;headerlink&quot; title=&quot;1.下载代码&quot;&gt;&lt;/a&gt;1.下载代码&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; http//xxxx.git –b dev xxxx_dev_local&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="http://zengdh.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Gulp 配置（五）---图片篇</title>
-    <link href="http://zengdh.com/2017/04/04/note5/"/>
-    <id>http://zengdh.com/2017/04/04/note5/</id>
-    <published>2017-04-04T07:28:00.531Z</published>
-    <updated>2017-04-08T01:32:18.158Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note5/"/>
+    <id>http://zengdh.com/2017/05/25/note5/</id>
+    <published>2017-05-25T02:50:44.876Z</published>
+    <updated>2017-05-25T02:50:44.876Z</updated>
     
     <content type="html"><![CDATA[<p>图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。</p>
 <h2 id="gulp-base64"><a href="#gulp-base64" class="headerlink" title="gulp-base64"></a>gulp-base64</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var base64 = require(<span class="string">'gulp-base64'</span>);</div></pre></td></tr></table></figure>
@@ -141,10 +105,10 @@
   
   <entry>
     <title>Gulp 配置（四）---模板篇</title>
-    <link href="http://zengdh.com/2017/04/03/note4/"/>
-    <id>http://zengdh.com/2017/04/03/note4/</id>
-    <published>2017-04-03T07:19:46.802Z</published>
-    <updated>2017-04-03T07:31:00.110Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note4/"/>
+    <id>http://zengdh.com/2017/05/25/note4/</id>
+    <published>2017-05-25T02:50:44.876Z</published>
+    <updated>2017-05-25T02:50:44.876Z</updated>
     
     <content type="html"><![CDATA[<p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
 <h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
@@ -173,11 +137,47 @@
   </entry>
   
   <entry>
+    <title>git日常提交步骤-基本命令行</title>
+    <link href="http://zengdh.com/2017/05/25/note6/"/>
+    <id>http://zengdh.com/2017/05/25/note6/</id>
+    <published>2017-05-25T02:50:44.876Z</published>
+    <updated>2017-05-25T02:50:44.877Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>注解：<br>1)   -b dev   指定想要下载的分支，去掉省略的话下载的是默认分支是master（注：默认分支可以修改）<br>2)   xxxx_dev_local是我想要在本地创建的git库文件夹名字，去掉省略的话下载好的git库名字是xxxx git库的名字，建议使用这种重命名方式</p>
+<h2 id="2-更新代码"><a href="#2-更新代码" class="headerlink" title="2.更新代码"></a>2.更新代码</h2><p>注：每次修改前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<h2 id="3-修改、增加或删除代码文件到git-index缓存中"><a href="#3-修改、增加或删除代码文件到git-index缓存中" class="headerlink" title="3.修改、增加或删除代码文件到git index缓存中"></a>3.修改、增加或删除代码文件到git index缓存中</h2><p>修改或新增加代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add file_name</div></pre></td></tr></table></figure></p>
+<p>删除代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm file_name</div></pre></td></tr></table></figure></p>
+<h2 id="4-提交本地git库index缓存中的修改"><a href="#4-提交本地git库index缓存中的修改" class="headerlink" title="4.提交本地git库index缓存中的修改"></a>4.提交本地git库index缓存中的修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –m “just a <span class="built_in">test</span> <span class="keyword">for</span> commit ”</div></pre></td></tr></table></figure>
+<p>如果本地修改不对或commit的LOG需要修改可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –-amend //修复上一次提交，不要修改Merge提交</div></pre></td></tr></table></figure></p>
+<p>##5.更新代码<br>注：每次push前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
+<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<p>##6.推送提交到服务器上的git库中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
+<p>注：默认会推送到我们下载git库时的-b 后面加的那个分支，没有加默认是master，这个命令完整版实际上是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 当前分支名:我们下载的分支名</div></pre></td></tr></table></figure></p>
+<p>##7.解消代码冲突<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge xxxx_branch 或者 git pull 时 or</div><div class="line">git rebase xxxx_branch 或者 git pull --rebase 时</div></pre></td></tr></table></figure></p>
+<p>解消方法也是修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-下载代码&quot;&gt;&lt;a href=&quot;#1-下载代码&quot; class=&quot;headerlink&quot; title=&quot;1.下载代码&quot;&gt;&lt;/a&gt;1.下载代码&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; http//xxxx.git –b dev xxxx_dev_local&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://zengdh.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Gulp 配置（三）---service篇</title>
-    <link href="http://zengdh.com/2017/04/03/note3/"/>
-    <id>http://zengdh.com/2017/04/03/note3/</id>
-    <published>2017-04-03T06:40:26.081Z</published>
-    <updated>2017-04-04T07:18:26.369Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note3/"/>
+    <id>http://zengdh.com/2017/05/25/note3/</id>
+    <published>2017-05-25T02:50:44.875Z</published>
+    <updated>2017-05-25T02:50:44.875Z</updated>
     
     <content type="html"><![CDATA[<p>实际开发中，如果每次修改html、sass、js都要手动去执行编译命令，这将是一件很痛苦的事，所以配置一个本地服务，让它实时编译刷新是很必要的。</p>
 <h2 id="gulp-connect"><a href="#gulp-connect" class="headerlink" title="gulp-connect"></a>gulp-connect</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var connect = require(<span class="string">'gulp-connect'</span>);</div></pre></td></tr></table></figure>
@@ -214,10 +214,10 @@
   
   <entry>
     <title>Gulp 配置（二）---sass篇</title>
-    <link href="http://zengdh.com/2017/04/03/note2/"/>
-    <id>http://zengdh.com/2017/04/03/note2/</id>
-    <published>2017-04-03T05:53:17.480Z</published>
-    <updated>2017-04-08T06:15:15.906Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note2/"/>
+    <id>http://zengdh.com/2017/05/25/note2/</id>
+    <published>2017-05-25T02:50:44.874Z</published>
+    <updated>2017-05-25T02:50:44.875Z</updated>
     
     <content type="html"><![CDATA[<p>sass、less、stylus都是css预处理框架，它可以提高开发效率，编写富有表现力的、动态的、健壮的CSS。</p>
 <ul>
@@ -271,10 +271,10 @@
   
   <entry>
     <title>Gulp 配置（一）---seaJs篇</title>
-    <link href="http://zengdh.com/2017/04/03/note/"/>
-    <id>http://zengdh.com/2017/04/03/note/</id>
-    <published>2017-04-03T01:54:59.771Z</published>
-    <updated>2017-04-04T14:28:10.866Z</updated>
+    <link href="http://zengdh.com/2017/05/25/note/"/>
+    <id>http://zengdh.com/2017/05/25/note/</id>
+    <published>2017-05-25T02:50:44.874Z</published>
+    <updated>2017-05-25T02:50:44.874Z</updated>
     
     <content type="html"><![CDATA[<p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
 <ul>

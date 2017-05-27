@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Tag: gulp | 博博博客</title>
+  <title>Gulp 配置（一）---seaJs篇 | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/tags/gulp/index.html">
+  <meta name="description" content="Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具这里我采用 seajs来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。  gulp安装就不赘述  引入seajs1&amp;lt;script type=&quot;text/javascrip">
+<meta name="keywords" content="gulp,seajs,gulp-seajs-transport">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp 配置（一）---seaJs篇">
+<meta property="og:url" content="http://zengdh.com/2017/05/25/note/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具这里我采用 seajs来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。  gulp安装就不赘述  引入seajs1&amp;lt;script type=&quot;text/javascrip">
+<meta property="og:image" content="http://zengdh.com/img/img1.png">
+<meta property="og:image" content="http://zengdh.com/img/img2.png">
+<meta property="og:image" content="http://zengdh.com/img/img3.png">
+<meta property="og:image" content="http://zengdh.com/img/img4.png">
+<meta property="og:updated_time" content="2017-05-25T02:50:44.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="Gulp 配置（一）---seaJs篇">
+<meta name="twitter:description" content="Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具这里我采用 seajs来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。  gulp安装就不赘述  引入seajs1&amp;lt;script type=&quot;text/javascrip">
+<meta name="twitter:image" content="http://zengdh.com/img/img1.png">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -138,236 +145,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
+    <h1 class="article-title" itemprop="name">
+      Gulp 配置（一）---seaJs篇
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
+        
+        <a href="/2017/05/25/note/" class="archive-article-date">
   	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
+<ul>
+<li>gulp安装就不赘述</li>
+</ul>
+<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="配置seajs"><a href="#配置seajs" class="headerlink" title="配置seajs"></a>配置seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">seajs.config(&#123;</div><div class="line">	 paths: &#123;</div><div class="line">             <span class="string">'src'</span>: <span class="string">'../../src/'</span>  //路径配置</div><div class="line">	 &#125;,</div><div class="line">         <span class="built_in">alias</span>: &#123;//别名配置</div><div class="line">             jquery:<span class="string">'jquery.js'</span>,</div><div class="line">             index:<span class="string">'src/js/index.js'</span></div><div class="line">         &#125;,</div><div class="line">         map: [//映射配置</div><div class="line">	     [ /^(.*\.(?:css|js))(.*)$/i, <span class="string">'$1?201703281819'</span> ]</div><div class="line">	 ],</div><div class="line">	 preload: [<span class="string">'jquery'</span>]  // 预加载项</div><div class="line">	 &#125;);</div><div class="line">seajs.use([<span class="string">"jquery"</span>,<span class="string">"index"</span>]);  //模块加载</div></pre></td></tr></table></figure>
+<p><a href="http://yslove.net/seajs/" target="_blank">更多配置项&gt;&gt;</a></p>
+<h2 id="新建两个js文件a-js和b-js"><a href="#新建两个js文件a-js和b-js" class="headerlink" title="新建两个js文件a.js和b.js"></a>新建两个js文件a.js和b.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">a.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var AJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自a.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=AJS;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">b.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var BJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自b.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=BJS;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="index-js引入a-js和b-js的方法"><a href="#index-js引入a-js和b-js的方法" class="headerlink" title="index.js引入a.js和b.js的方法"></a>index.js引入a.js和b.js的方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">        var AJS=require(<span class="string">'a'</span>);</div><div class="line">        var BJS=require(<span class="string">'b'</span>);</div><div class="line">	var INDEX=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            console.log(<span class="string">'来自index.js的内容'</span>);</div><div class="line">            AJS.aDom();</div><div class="line">            BJS.bDom();</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=INDEX.init();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="打开引入index-js的html文件"><a href="#打开引入index-js的html文件" class="headerlink" title="打开引入index.js的html文件"></a>打开引入index.js的html文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">seajs.use([<span class="string">"index"</span>]); //引入index.js</div></pre></td></tr></table></figure>
+<p><img src="/img/img1.png"></p>
+<p>这里可以看到index.js中成功引入了a.js和b.js的方法，再看一下Network<br><img src="/img/img2.png"><br>这边加载了三个js文件，这并不符合我的需求，我希望我引入某个js文件的方法时，只需要加载那个方法，而不是整个js文件都加载进来，所以我需要合并js，添加一个gulp task任务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'mergeScripts'</span>,<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="built_in">return</span> gulp.src([<span class="string">'./src/js/a.js'</span>,<span class="string">'./src/js/b.js'</span>,<span class="string">'./src/js/index.js'</span>])    </div><div class="line">            .pipe(uglify(&#123;//压缩js</div><div class="line">             mangle: <span class="literal">true</span>,//类型：Boolean 默认：<span class="literal">true</span> 是否修改变量名</div><div class="line">             mangle: &#123; except: [<span class="string">'require'</span>, <span class="string">'exports'</span>, <span class="string">'module'</span>, <span class="string">'$'</span>] &#125;//排除混淆关键字</div><div class="line">             &#125;))</div><div class="line">            .pipe(concat(<span class="string">'index.js'</span>))  //生成js</div><div class="line">            .pipe(gulp.dest(<span class="string">'./build/js/'</span>));  //生成合并后的js的路径   </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp mergeScripts</div></pre></td></tr></table></figure>
+<p><img src="/img/img3.png"><br>合并是合并了，但是还是加载了三个js<br>这里需要引入gulp-seajs-transport来具象化js模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> transport = <span class="built_in">require</span>(<span class="string">'gulp-seajs-transport'</span>);</div><div class="line">.pipe(transport());</div></pre></td></tr></table></figure></p>
+<p><img src="/img/img4.png"><br>完成，既加载了我所需要的方法，又减少了http请求<br>over</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -387,19 +229,92 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/05/25/note/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/25/note2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Gulp 配置（二）---sass篇
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -422,9 +337,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

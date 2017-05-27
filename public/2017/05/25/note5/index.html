@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Tag: gulp | 博博博客</title>
+  <title>Gulp 配置（五）---图片篇 | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/tags/gulp/index.html">
+  <meta name="description" content="图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。 gulp-base64需要引入的依赖1var base64 = require(&apos;gulp-base64&apos;);">
+<meta name="keywords" content="base64,spriter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp 配置（五）---图片篇">
+<meta property="og:url" content="http://zengdh.com/2017/05/25/note5/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。 gulp-base64需要引入的依赖1var base64 = require(&apos;gulp-base64&apos;);">
+<meta property="og:updated_time" content="2017-05-25T02:50:44.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="Gulp 配置（五）---图片篇">
+<meta name="twitter:description" content="图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。 gulp-base64需要引入的依赖1var base64 = require(&apos;gulp-base64&apos;);">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -138,268 +140,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
+    <h1 class="article-title" itemprop="name">
+      Gulp 配置（五）---图片篇
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
+        
+        <a href="/2017/05/25/note5/" class="archive-article-date">
   	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。</p>
+<h2 id="gulp-base64"><a href="#gulp-base64" class="headerlink" title="gulp-base64"></a>gulp-base64</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var base64 = require(<span class="string">'gulp-base64'</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'base64'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> gulp.src(<span class="string">'./build/scss/*'</span>)</div><div class="line">        .pipe(base64(&#123;</div><div class="line">            baseDir: <span class="string">'./build/scss/'</span>,</div><div class="line">            extensions: [<span class="string">'svg'</span>, <span class="string">'png'</span>, /\.jpg<span class="comment">#datauri$/i],</span></div><div class="line">            exclude:    [/\.server\.(com|net)\/dynamic\//, <span class="string">'--live.jpg'</span>],</div><div class="line">            maxImageSize: 8*1024, // bytes </div><div class="line">            debug: <span class="literal">true</span></div><div class="line">        &#125;))</div><div class="line">        .pipe(gulp.dest(<span class="string">'./build/scss'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="gulp-css-spriter"><a href="#gulp-css-spriter" class="headerlink" title="gulp-css-spriter"></a>gulp-css-spriter</h2><h4 id="需要引入的依赖-1"><a href="#需要引入的依赖-1" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var spriter = require(<span class="string">'gulp-css-spriter'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'mergeScss'</span>, [<span class="string">'cleanScss'</span>],<span class="function"><span class="title">function</span></span> ()&#123;</div><div class="line">        var timestamp = +new Date();</div><div class="line">        <span class="built_in">return</span> gulp.src([<span class="string">'./static/scss/*.scss'</span>])</div><div class="line">            .pipe(sass().on(<span class="string">'error'</span>, sass.logError))</div><div class="line">            .pipe(spriter(&#123;</div><div class="line">            // 生成的spriter的位置</div><div class="line">            <span class="string">'spriteSheet'</span>: <span class="string">'./build/img/sprite-'</span>+timestamp+<span class="string">'.png'</span>,</div><div class="line">            // 生成样式文件图片引用地址的路径</div><div class="line">            // 如下将生产：backgound:url(../images/sprite20324232.png)</div><div class="line">            <span class="string">'pathToSpriteSheetFromCSS'</span>: <span class="string">'../img/sprite-'</span>+timestamp+<span class="string">'.png'</span></div><div class="line">            &#125;))</div><div class="line">            .pipe(minifycss())</div><div class="line">            .pipe(rev())                                            //- 文件名加MD5后缀</div><div class="line">            .pipe(gulp.dest(<span class="string">'./build/scss/'</span>))</div><div class="line">            .pipe(rev.manifest())                                   //- 生成一个rev-manifest.json</div><div class="line">            .pipe(gulp.dest(<span class="string">'./rev'</span>))                              //- 将 rev-manifest.json 保存到 rev 目录内</div><div class="line">            .pipe(notify(&#123; message: <span class="string">'mergeScss task ok'</span> &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>css:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.x&#123;width: 50px;height: 50px;background: url(../img/x.png?__spriter) 0 0 no-repeat;&#125;</div><div class="line">.y&#123;width: 50px;height: 50px;background: url(../img/y.png) 0 0 no-repeat;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>gulp-css-spriter默认会对样式文件里，所有的background/background-image的图片合并，</p>
+<p>但实际项目中，我们不是所有的图片都需要合并。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">background-image:url(../img/x.png?__spriter);//有?__spriter后缀的合并</div><div class="line"></div><div class="line">background-image:url(../img/y.png);//不合并</div></pre></td></tr></table></figure>
+<p>修改gulp-css-spriter源文件<br>进入 node_modules\gulp-css-spriter\lib\map-over-styles-and-transform-background-image-declarations.js<br>第43行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(transformedDeclaration.property === <span class="string">'background-image'</span>) &#123;</div><div class="line">			<span class="built_in">return</span> cb(transformedDeclaration, declarationIndex, declarations);</div><div class="line">		&#125;</div><div class="line">		// Background is a shorthand property so make sure `url()` is <span class="keyword">in</span> there</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(transformedDeclaration.property === <span class="string">'background'</span>) &#123;</div><div class="line">			var hasImageValue = spriterUtil.backgroundURLRegex.test(transformedDeclaration.value);</div><div class="line"></div><div class="line">			<span class="keyword">if</span>(hasImageValue) &#123;</div><div class="line">				<span class="built_in">return</span> cb(transformedDeclaration, declarationIndex, declarations);</div><div class="line">			&#125;</div><div class="line">		&#125;</div></pre></td></tr></table></figure></p>
+<p>更新为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(transformedDeclaration.property === <span class="string">'background-image'</span> &amp;&amp; /\?__spriter/i.test(transformedDeclaration.value)) &#123;</div><div class="line"></div><div class="line">                    transformedDeclaration.value = transformedDeclaration.value.replace(<span class="string">'?__spriter'</span>,<span class="string">''</span>);</div><div class="line">                    <span class="built_in">return</span> cb(transformedDeclaration, declarationIndex, declarations);</div><div class="line">                &#125;</div><div class="line">                // Background is a shorthand property so make sure `url()` is <span class="keyword">in</span> there 且判断url是否有?__spriter后缀</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(transformedDeclaration.property === <span class="string">'background'</span> &amp;&amp; /\?__spriter/i.test(transformedDeclaration.value)) &#123;</div><div class="line"></div><div class="line">                    transformedDeclaration.value = transformedDeclaration.value.replace(<span class="string">'?__spriter'</span>,<span class="string">''</span>);</div><div class="line">                    var hasImageValue = spriterUtil.backgroundURLRegex.test(transformedDeclaration.value);</div><div class="line"></div><div class="line">                    <span class="keyword">if</span>(hasImageValue) &#123;</div><div class="line">                        <span class="built_in">return</span> cb(transformedDeclaration, declarationIndex, declarations);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div></pre></td></tr></table></figure></p>
+<p>over</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">base64</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spriter</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/05/25/note5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
+    <a href="/2017/05/25/note7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前后端分离实践-gulp+express
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/25/note4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gulp 配置（四）---模板篇</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -422,9 +330,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

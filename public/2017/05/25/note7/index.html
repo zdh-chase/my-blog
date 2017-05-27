@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Tag: gulp | 博博博客</title>
+  <title>前后端分离实践-gulp+express | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/tags/gulp/index.html">
+  <meta name="description" content="技术栈：gulp+express+browser-sync+seajs+sass+ejs1.前端打包工具：gulp2.express 做中间件和路由配置3.browser-sync 浏览器自动刷新4.seajs 模块化管理js5.sass css预编译6.ejs 模板引擎">
+<meta name="keywords" content="gulp,sass,seajs,前后端分离,express,browser-sync,ejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端分离实践-gulp+express">
+<meta property="og:url" content="http://zengdh.com/2017/05/25/note7/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="技术栈：gulp+express+browser-sync+seajs+sass+ejs1.前端打包工具：gulp2.express 做中间件和路由配置3.browser-sync 浏览器自动刷新4.seajs 模块化管理js5.sass css预编译6.ejs 模板引擎">
+<meta property="og:updated_time" content="2017-05-25T02:50:44.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="前后端分离实践-gulp+express">
+<meta name="twitter:description" content="技术栈：gulp+express+browser-sync+seajs+sass+ejs1.前端打包工具：gulp2.express 做中间件和路由配置3.browser-sync 浏览器自动刷新4.seajs 模块化管理js5.sass css预编译6.ejs 模板引擎">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -138,36 +140,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note7" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
+    <h1 class="article-title" itemprop="name">
+      前后端分离实践-gulp+express
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/25/note7/" class="archive-article-date">
+  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="技术栈：gulp-express-browser-sync-seajs-sass-ejs"><a href="#技术栈：gulp-express-browser-sync-seajs-sass-ejs" class="headerlink" title="技术栈：gulp+express+browser-sync+seajs+sass+ejs"></a>技术栈：gulp+express+browser-sync+seajs+sass+ejs</h2><p>1.前端打包工具：gulp<br>2.express 做中间件和路由配置<br>3.browser-sync 浏览器自动刷新<br>4.seajs 模块化管理js<br>5.sass css预编译<br>6.ejs 模板引擎</p>
+<a id="more"></a>
+<h2 id="1-安装express"><a href="#1-安装express" class="headerlink" title="1.安装express"></a>1.安装express</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g express-generator</div></pre></td></tr></table></figure>
+<h2 id="2-新建工程"><a href="#2-新建工程" class="headerlink" title="2.新建工程"></a>2.新建工程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ express <span class="_">-e</span> demo</div><div class="line">$ <span class="built_in">cd</span> demo &amp;&amp; npm install</div></pre></td></tr></table></figure>
+<h2 id="3-修改routes引入方式"><a href="#3-修改routes引入方式" class="headerlink" title="3.修改routes引入方式"></a>3.修改routes引入方式</h2><p>app.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var routes = require(<span class="string">'./routes/index'</span>);</div><div class="line">var app = express();</div><div class="line">routes(app);</div></pre></td></tr></table></figure></p>
+<p>/routes/index.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="keyword">function</span>(app) &#123;</div><div class="line">  app.get(<span class="string">'/'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">    res.render(<span class="string">'index'</span>, &#123; title: <span class="string">'Express'</span> &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="4-nodemon-browser-sync浏览器自动刷新"><a href="#4-nodemon-browser-sync浏览器自动刷新" class="headerlink" title="4.nodemon+browser-sync浏览器自动刷新"></a>4.nodemon+browser-sync浏览器自动刷新</h2><p>引入依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var browserSync = require(<span class="string">'browser-sync'</span>);</div><div class="line">var nodemon = require(<span class="string">'gulp-nodemon'</span>);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">// 浏览器同步，用7000端口去代理Express的3000端口</div><div class="line">gulp.task(<span class="string">'browser-sync'</span>, [<span class="string">'nodemon'</span>], <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  browserSync.init(null, &#123;</div><div class="line">    notify: <span class="literal">false</span>,//关闭页面通知</div><div class="line">    proxy: <span class="string">"http://localhost:3000"</span>,</div><div class="line">    files: [<span class="string">"dist/views/*.*"</span>,<span class="string">"dist/public/scss/*.*"</span>,<span class="string">"dist/public/javascripts/*.*"</span>,<span class="string">"dist/public/images/*.*"</span>],</div><div class="line">    browser: <span class="string">"chrome"</span>,</div><div class="line">    port: 7000,</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 开启Express服务</div><div class="line">gulp.task(<span class="string">'nodemon'</span>, <span class="keyword">function</span> (cb) &#123;</div><div class="line">  </div><div class="line">  var started = <span class="literal">false</span>;</div><div class="line">  </div><div class="line">  <span class="built_in">return</span> nodemon(&#123;</div><div class="line">    script: <span class="string">'bin/www'</span></div><div class="line">  &#125;).on(<span class="string">'start'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    //为了避免nodemon开始多次</div><div class="line">    <span class="keyword">if</span> (!started) &#123;</div><div class="line">      cb();</div><div class="line">      started = <span class="literal">true</span>; </div><div class="line">    &#125; </div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="5-http-proxy-middleware跨域"><a href="#5-http-proxy-middleware跨域" class="headerlink" title="5.http-proxy-middleware跨域"></a>5.http-proxy-middleware跨域</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="string">'/api'</span>, proxy(&#123;target: <span class="string">'http://localhost:8080'</span>, changeOrigin: <span class="literal">true</span>&#125;));</div></pre></td></tr></table></figure>
+<h2 id="6-gulp配置"><a href="#6-gulp配置" class="headerlink" title="6.gulp配置"></a>6.gulp配置</h2><p>和之前的一样</p>
+<h2 id="7-ejs基本语法"><a href="#7-ejs基本语法" class="headerlink" title="7.ejs基本语法"></a>7.ejs基本语法</h2><p>无缓冲的条件语句元素<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% code %&gt;</div></pre></td></tr></table></figure></p>
+<p>转义HTML，该code并且会打印出来<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%= code %&gt;</div></pre></td></tr></table></figure></p>
+<p>非转义的buffering，该code并且会打印出来<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- code %&gt;</div></pre></td></tr></table></figure></p>
+<p>内嵌别的文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% include file %&gt;</div></pre></td></tr></table></figure></p>
+<p>指定布局文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% layout(file) -%&gt;</div></pre></td></tr></table></figure></p>
+<p>包含js脚本文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% script(file) -%&gt;</div></pre></td></tr></table></figure></p>
+<p>包含css文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% stylesheet(file) -%&gt;</div></pre></td></tr></table></figure></p>
+<p>指定块内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% block(code, code) -%&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="8-已上传github"><a href="#8-已上传github" class="headerlink" title="8.已上传github"></a>8.已上传github</h2><p><a href="https://github.com/zdh-chase/gulp-cli" target="_blank">https://github.com/zdh-chase/gulp-cli</a></p>
+<p>over</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,203 +244,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/05/25/note7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
+  
+    <a href="/2017/05/25/note5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gulp 配置（五）---图片篇</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -422,9 +348,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
