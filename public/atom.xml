@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zengdh.com/"/>
-  <updated>2017-05-25T02:50:44.877Z</updated>
+  <updated>2017-06-02T09:29:31.079Z</updated>
   <id>http://zengdh.com/</id>
   
   <author>
@@ -14,6 +14,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初探mongodb（二）</title>
+    <link href="http://zengdh.com/2017/06/02/note9/"/>
+    <id>http://zengdh.com/2017/06/02/note9/</id>
+    <published>2017-06-02T07:53:27.165Z</published>
+    <updated>2017-06-02T09:29:31.079Z</updated>
+    
+    <content type="html"><![CDATA[<p>mongodb安装完成后，开始实战操作，这里使用express框架和mongodb可视化工具Robomongo一起搭配使用。</p>
+<a id="more"></a>
+<h2 id="1-安装express"><a href="#1-安装express" class="headerlink" title="1.安装express"></a>1.安装express</h2><p>npm安装太慢，推荐cnpm,使用淘宝镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<p>全局安装：cnpm install -g express<br>项目范围内安装： cnpm install express –save</p>
+<p>安装完express，在项目根目录新建app.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.send(<span class="string">'Hello World!'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var server = app.listen(3000, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  var host = server.address().address;</div><div class="line">  var port = server.address().port;</div><div class="line"></div><div class="line">  console.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>打开cmd，cd至项目目录，启动node app.js即可运行服务</p>
+<h2 id="2-可视化工具Robomongo"><a href="#2-可视化工具Robomongo" class="headerlink" title="2.可视化工具Robomongo"></a>2.可视化工具Robomongo</h2><p><a href="https://robomongo.org/" target="_blank">官网传送门</a><br>下载安装完成后，打开Robomongo<br><img src="/img/img8.png"><br>点击Create,输入Name，以及Address，端口默认为27017，地址Address和端口号一般不用更改。<br><img src="/img/img9.png"><br>这样名为test的mongodb连接创建完毕。</p>
+<h2 id="3-MongoDB和MySQL"><a href="#3-MongoDB和MySQL" class="headerlink" title="3.MongoDB和MySQL"></a>3.MongoDB和MySQL</h2><p><img src="/img/img10.png"></p>
+<h2 id="4-创建数据库"><a href="#4-创建数据库" class="headerlink" title="4.创建数据库"></a>4.创建数据库</h2><p><img src="/img/img11.png"><img src="/img/img12.png"><br>这里取名testDB,右键testDB下的collection新建表<br><img src="/img/img13.png"><br>这样一张表就建好了，然后往表里添加字段和数据，右键表名点击insert documet<br>MongoDB数据库中文档(每一行的数据)的数据结构和JSON基本一样，所有存储在集合中的数据都是BSON格式，BSON是一种类JSON的一种二进制形式的存储格式，简称Binary JSON。因此，我们在插入数据时，只要像JSON格式那样输入我们想要插入的数据。点击save保存即可成功插入数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    userName:<span class="string">'zdh'</span>,</div><div class="line">    age:18,</div><div class="line">    sex:<span class="string">'男'</span>,</div><div class="line">    job:<span class="string">'前端'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>点击save即可保存至表中：<br><img src="/img/img14.png"></p>
+<h2 id="5-连接数据库"><a href="#5-连接数据库" class="headerlink" title="5.连接数据库"></a>5.连接数据库</h2><p>使用MongoDB原生自带的API来创建连接，直接在app.js输入以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var MongoClient = require(<span class="string">'mongodb'</span>).MongoClient,</div><div class="line">    DB_CONN_STR = <span class="string">'mongodb://localhost:27017/testDB'</span>; //数据库为 <span class="built_in">test</span>DB</div><div class="line">var selectData = <span class="keyword">function</span>(db, callback) &#123;  </div><div class="line">  //连接到user表  </div><div class="line">  var collection = db.collection(<span class="string">'user'</span>);</div><div class="line">  //查询数据</div><div class="line">  var <span class="built_in">where</span>Str = &#123;<span class="string">"userName"</span>:<span class="string">'zdh'</span>&#125;;</div><div class="line">  collection.find(<span class="built_in">where</span>Str).toArray(<span class="keyword">function</span>(err, result) &#123;</div><div class="line">    <span class="keyword">if</span>(err)</div><div class="line">    &#123;</div><div class="line">      console.log(<span class="string">'Error:'</span>+ err);</div><div class="line">      <span class="built_in">return</span>;</div><div class="line">    &#125;     </div><div class="line">    callback(result);</div><div class="line">  &#125;);</div><div class="line">&#125; </div><div class="line">MongoClient.connect(DB_CONN_STR, <span class="keyword">function</span>(err, db) &#123;</div><div class="line">  console.log(<span class="string">"连接成功！"</span>);</div><div class="line">  selectData(db, <span class="keyword">function</span>(result) &#123;</div><div class="line">    console.log(result);</div><div class="line">    db.close();</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="6-使用Mongoose连接数据库"><a href="#6-使用Mongoose连接数据库" class="headerlink" title="6.使用Mongoose连接数据库"></a>6.使用Mongoose连接数据库</h2><p>除了使用MongoDB原生自带的API来创建连接外，也可以使用Mongoose配合操作，mongoose文档（<a href="http://www.nodeclass.com/api/mongoose.html" target="_blank">传送门</a>）</p>
+<p>app.js中使用mongoose:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">const pkg = require(<span class="string">'./package'</span>)</div><div class="line">const express = require(<span class="string">'express'</span>)</div><div class="line">const bodyParser = require(<span class="string">'body-parser'</span>)</div><div class="line">const mongoose = require(<span class="string">'mongoose'</span>)</div><div class="line">const user = require(<span class="string">'./api/user'</span>)</div><div class="line"></div><div class="line">mongoose.connect(<span class="string">'mongodb://localhost/testDB'</span>)</div><div class="line">mongoose.Promise = global.Promise</div><div class="line"> const db = mongoose.connection;</div><div class="line">db.on(<span class="string">'error'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    console.log(<span class="string">'Database connection error.'</span>);</div><div class="line">&#125;);</div><div class="line">db.once(<span class="string">'open'</span>, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    console.log(<span class="string">'The Database has connected.'</span>)</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">const app = express()</div><div class="line">const port = process.env.PORT || 3000</div><div class="line"></div><div class="line">app.use(bodyParser.json())</div><div class="line">app.use(bodyParser.urlencoded(&#123; extended: <span class="literal">true</span> &#125;))</div><div class="line">app.use(express.static(<span class="string">'dist'</span>))</div><div class="line">app.use(<span class="string">'/api'</span>,user)</div><div class="line"></div><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">  console.log(`<span class="variable">$&#123;pkg.name&#125;</span> listening on port <span class="variable">$&#123;port&#125;</span>`)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">module.exports = app</div></pre></td></tr></table></figure></p>
+<p>在项目根目录下新建了api文件夹，用于存放操作数据库的接口方法，api文件下user.js如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">const express = require(<span class="string">'express'</span>)</div><div class="line">const router = express.Router()</div><div class="line">const User = require(<span class="string">'../models/user'</span>)</div><div class="line"></div><div class="line">//查询user表中的数据</div><div class="line">router.get(<span class="string">'/userList'</span>, (req, res) =&gt; &#123;</div><div class="line">  User.find(<span class="keyword">function</span>(err,persons)&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">        res.json(err)</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        res.json(persons)</div><div class="line">    &#125;</div><div class="line"> &#125;)</div><div class="line">&#125;)</div><div class="line">//往user表中插入数据</div><div class="line">router.get(<span class="string">'/insertUser'</span>, (req,res) =&gt; &#123;</div><div class="line">  var user = new Movie(&#123;</div><div class="line">      userName : <span class="string">'zengdh'</span>,                </div><div class="line">      age : <span class="string">'20'</span>,</div><div class="line">      sex : <span class="string">'男'</span>,</div><div class="line">      job : <span class="string">'前端攻城狮'</span></div><div class="line">  &#125;);</div><div class="line">  user.save(<span class="keyword">function</span> (err, results) &#123;</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (err) &#123;</div><div class="line">          res.send(<span class="string">"Error:"</span> + err)</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">else</span> &#123;</div><div class="line">          res.send(&#123;</div><div class="line">            message: <span class="string">'数据添加成功'</span>,</div><div class="line">            data: results</div><div class="line">          &#125;)</div><div class="line">      &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在项目根目录下新建models文件夹，用于存放数据模型，这里models下user.js内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const mongoose = require(<span class="string">'mongoose'</span>)</div><div class="line"></div><div class="line">const userSchema =new mongoose.Schema(&#123;</div><div class="line">  userName:  &#123; <span class="built_in">type</span>: String &#125;,//用户名</div><div class="line">  age:  &#123; <span class="built_in">type</span>: Number &#125;, // 年龄</div><div class="line">  sex:  &#123; <span class="built_in">type</span>: String &#125;,// 性别</div><div class="line">  job:  &#123; <span class="built_in">type</span>: String &#125;, // 工作</div><div class="line">&#125;,&#123;collection:<span class="string">'user'</span>&#125;)</div><div class="line">// 这边collection如果不写的话，在调用api接口的时候，会在数据库中新建一张后缀名加了s的表，即users</div><div class="line"></div><div class="line">const Movie = module.exports = mongoose.model(<span class="string">'user'</span>,userSchema)</div></pre></td></tr></table></figure></p>
+<h2 id="7-调用接口"><a href="#7-调用接口" class="headerlink" title="7.调用接口"></a>7.调用接口</h2><p>在package.json中加了启动服务的命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"server"</span>: <span class="string">"nodemon app.js"</span></div></pre></td></tr></table></figure></p>
+<p>运行 npm run server，浏览器输入”localhost:3000/api/userList” ，这是刚才在api文件夹下user.js中写的获取数据的接口，调用成功后返回内容如下：<br><img src="/img/img15.png"><br>这是刚才通过数据库直接插入表中的数据，接下来调用一下插入信息的接口，浏览器输入”localhost:3000/api/insertUser” ，调用成功后返回内容如下：<br><img src="/img/img16.png"><br>然后看下数据库：<br><img src="/img/img17.png"><br>数据插入成功了，大功告成。</p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;mongodb安装完成后，开始实战操作，这里使用express框架和mongodb可视化工具Robomongo一起搭配使用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="express" scheme="http://zengdh.com/tags/express/"/>
+    
+      <category term="mongodb" scheme="http://zengdh.com/tags/mongodb/"/>
+    
+      <category term="node" scheme="http://zengdh.com/tags/node/"/>
+    
+      <category term="mongoose" scheme="http://zengdh.com/tags/mongoose/"/>
+    
+      <category term="body-parser" scheme="http://zengdh.com/tags/body-parser/"/>
+    
+      <category term="robomongo" scheme="http://zengdh.com/tags/robomongo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初探mongodb（一）</title>
+    <link href="http://zengdh.com/2017/06/02/note8/"/>
+    <id>http://zengdh.com/2017/06/02/note8/</id>
+    <published>2017-06-02T06:56:26.637Z</published>
+    <updated>2017-06-02T07:51:04.486Z</updated>
+    
+    <content type="html"><![CDATA[<p>配置：</p>
+<p>1.nodejs（官网地址：<a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>下载安装）<br>2.express，基于nodejs的开发框架-<a href="http://www.expressjs.com.cn/" target="_blank">传送门</a><br>3.mongodb<br>4.mongoose</p>
+<a id="more"></a>
+<h2 id="1-mongodb-安装配置"><a href="#1-mongodb-安装配置" class="headerlink" title="1.mongodb 安装配置"></a>1.mongodb 安装配置</h2><p>进入mongodb官网下载安装，附上<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank">传送门</a>，安装完成后的目录文件：<br><img src="/img/img5.png"></p>
+<p style="color:red">logs这个目录是后面手动新建的文件夹，用来存放日志文件的。</p>
+
+<h2 id="2-修改环境变量"><a href="#2-修改环境变量" class="headerlink" title="2.修改环境变量"></a>2.修改环境变量</h2><p>mongodb安装完成后，将mongdb的文件目录路径添加至系统变量path下<br><img src="/img/img6.png"></p>
+<h2 id="3-创建数据库目录"><a href="#3-创建数据库目录" class="headerlink" title="3.创建数据库目录"></a>3.创建数据库目录</h2><p>数据库目录不会自动创建，需要手动创建，这边我手动创建在F:\data\db</p>
+<h2 id="4-指定数据库存放目录及日志"><a href="#4-指定数据库存放目录及日志" class="headerlink" title="4.指定数据库存放目录及日志"></a>4.指定数据库存放目录及日志</h2><p>打开cmd，输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath <span class="string">"F:\data\db"</span> --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span></div></pre></td></tr></table></figure></p>
+<h2 id="5-安装mongodb为windows服务"><a href="#5-安装mongodb为windows服务" class="headerlink" title="5.安装mongodb为windows服务"></a>5.安装mongodb为windows服务</h2><p>通过命令启动mongo服务太麻烦，为mongodb注册系统服务，以管理员身份打开cmd，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --install --dbpath <span class="string">"F:\data\db"</span> --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span></div></pre></td></tr></table></figure></p>
+<p>更多设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --bind_ip yourIPadress --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span> --logappend --dbpath <span class="string">"D:\data\db"</span> --port yourPortNumber --serviceName <span class="string">"YourServiceName"</span> --serviceDisplayName <span class="string">"YourServiceName"</span> --install</div></pre></td></tr></table></figure></p>
+<p>参数 描述<br>–bind_ip 绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP<br>–logpath 指定MongoDB日志文件，注意是指定文件不是目录<br>–logappend 使用追加的方式写日志<br>–dbpath 指定数据库路径<br>–port 指定服务端口号，默认端口27017<br>–serviceName 指定服务名称<br>–serviceDisplayName 指定服务名称，有多个mongodb服务时执行。<br>–install 指定作为一个Windows服务安装。</p>
+<h2 id="6-mongo服务指令"><a href="#6-mongo服务指令" class="headerlink" title="6.mongo服务指令"></a>6.mongo服务指令</h2><p>添加完window服务后，以管理员身份打开cmd，启动服务输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start MongoDB</div></pre></td></tr></table></figure></p>
+<p>关闭服务命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net stop MongoDB</div></pre></td></tr></table></figure></p>
+<p><img src="/img/img7.png"></p>
+<h2 id="7-报错"><a href="#7-报错" class="headerlink" title="7.报错"></a>7.报错</h2><p>如果报错“MongoDB 服务正在启动 .MongoDB 服务无法启动。发生服务特定错误: 100.”，则前去db目录下的mongod.lock和storage.bson文件删掉，以管理员身份运行命令行然后重新启动服务即可。</p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;1.nodejs（官网地址：&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot;&gt;https://nodejs.org/en/&lt;/a&gt;下载安装）&lt;br&gt;2.express，基于nodejs的开发框架-&lt;a href=&quot;http://www.expressjs.com.cn/&quot; target=&quot;_blank&quot;&gt;传送门&lt;/a&gt;&lt;br&gt;3.mongodb&lt;br&gt;4.mongoose&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="express" scheme="http://zengdh.com/tags/express/"/>
+    
+      <category term="mongodb" scheme="http://zengdh.com/tags/mongodb/"/>
+    
+      <category term="node" scheme="http://zengdh.com/tags/node/"/>
+    
+      <category term="mongoose" scheme="http://zengdh.com/tags/mongoose/"/>
+    
+      <category term="body-parser" scheme="http://zengdh.com/tags/body-parser/"/>
+    
+      <category term="robomongo" scheme="http://zengdh.com/tags/robomongo/"/>
+    
+  </entry>
   
   <entry>
     <title>前后端分离实践-gulp+express</title>

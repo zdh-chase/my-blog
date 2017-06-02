@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Archives: 2017 | 博博博客</title>
+  <title>初探mongodb（一） | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/archives/2017/index.html">
+  <meta name="description" content="配置： 1.nodejs（官网地址：https://nodejs.org/en/下载安装）2.express，基于nodejs的开发框架-传送门3.mongodb4.mongoose">
+<meta name="keywords" content="express,mongodb,node,mongoose,body-parser,robomongo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探mongodb（一）">
+<meta property="og:url" content="http://zengdh.com/2017/06/02/note8/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="配置： 1.nodejs（官网地址：https://nodejs.org/en/下载安装）2.express，基于nodejs的开发框架-传送门3.mongodb4.mongoose">
+<meta property="og:image" content="http://zengdh.com/img/img5.png">
+<meta property="og:image" content="http://zengdh.com/img/img6.png">
+<meta property="og:image" content="http://zengdh.com/img/img7.png">
+<meta property="og:updated_time" content="2017-06-02T07:51:04.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="初探mongodb（一）">
+<meta name="twitter:description" content="配置： 1.nodejs（官网地址：https://nodejs.org/en/下载安装）2.express，基于nodejs的开发框架-传送门3.mongodb4.mongoose">
+<meta name="twitter:image" content="http://zengdh.com/img/img5.png">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -138,94 +144,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note8" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/note9/" class="archive-article-date">
-  	<time datetime="2017-06-02T07:53:27.165Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/note9/">初探mongodb（二）</a>
+    <h1 class="article-title" itemprop="name">
+      初探mongodb（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mongoose</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">body-parser</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">robomongo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/note8/" class="archive-article-date">
+        
+        <a href="/2017/06/02/note8/" class="archive-article-date">
   	<time datetime="2017-06-02T06:56:26.637Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/note8/">初探mongodb（一）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>配置：</p>
+<p>1.nodejs（官网地址：<a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>下载安装）<br>2.express，基于nodejs的开发框架-<a href="http://www.expressjs.com.cn/" target="_blank">传送门</a><br>3.mongodb<br>4.mongoose</p>
+<a id="more"></a>
+<h2 id="1-mongodb-安装配置"><a href="#1-mongodb-安装配置" class="headerlink" title="1.mongodb 安装配置"></a>1.mongodb 安装配置</h2><p>进入mongodb官网下载安装，附上<a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank">传送门</a>，安装完成后的目录文件：<br><img src="/img/img5.png"></p>
+<p style="color:red">logs这个目录是后面手动新建的文件夹，用来存放日志文件的。</p>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="2-修改环境变量"><a href="#2-修改环境变量" class="headerlink" title="2.修改环境变量"></a>2.修改环境变量</h2><p>mongodb安装完成后，将mongdb的文件目录路径添加至系统变量path下<br><img src="/img/img6.png"></p>
+<h2 id="3-创建数据库目录"><a href="#3-创建数据库目录" class="headerlink" title="3.创建数据库目录"></a>3.创建数据库目录</h2><p>数据库目录不会自动创建，需要手动创建，这边我手动创建在F:\data\db</p>
+<h2 id="4-指定数据库存放目录及日志"><a href="#4-指定数据库存放目录及日志" class="headerlink" title="4.指定数据库存放目录及日志"></a>4.指定数据库存放目录及日志</h2><p>打开cmd，输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath <span class="string">"F:\data\db"</span> --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span></div></pre></td></tr></table></figure></p>
+<h2 id="5-安装mongodb为windows服务"><a href="#5-安装mongodb为windows服务" class="headerlink" title="5.安装mongodb为windows服务"></a>5.安装mongodb为windows服务</h2><p>通过命令启动mongo服务太麻烦，为mongodb注册系统服务，以管理员身份打开cmd，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --install --dbpath <span class="string">"F:\data\db"</span> --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span></div></pre></td></tr></table></figure></p>
+<p>更多设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --bind_ip yourIPadress --logpath <span class="string">"F:\mongodb\logs\mongod.log"</span> --logappend --dbpath <span class="string">"D:\data\db"</span> --port yourPortNumber --serviceName <span class="string">"YourServiceName"</span> --serviceDisplayName <span class="string">"YourServiceName"</span> --install</div></pre></td></tr></table></figure></p>
+<p>参数 描述<br>–bind_ip 绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP<br>–logpath 指定MongoDB日志文件，注意是指定文件不是目录<br>–logappend 使用追加的方式写日志<br>–dbpath 指定数据库路径<br>–port 指定服务端口号，默认端口27017<br>–serviceName 指定服务名称<br>–serviceDisplayName 指定服务名称，有多个mongodb服务时执行。<br>–install 指定作为一个Windows服务安装。</p>
+<h2 id="6-mongo服务指令"><a href="#6-mongo服务指令" class="headerlink" title="6.mongo服务指令"></a>6.mongo服务指令</h2><p>添加完window服务后，以管理员身份打开cmd，启动服务输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start MongoDB</div></pre></td></tr></table></figure></p>
+<p>关闭服务命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net stop MongoDB</div></pre></td></tr></table></figure></p>
+<p><img src="/img/img7.png"></p>
+<h2 id="7-报错"><a href="#7-报错" class="headerlink" title="7.报错"></a>7.报错</h2><p>如果报错“MongoDB 服务正在启动 .MongoDB 服务无法启动。发生服务特定错误: 100.”，则前去db目录下的mongod.lock和storage.bson文件删掉，以管理员身份运行命令行然后重新启动服务即可。</p>
+<p>over</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -257,345 +241,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/06/02/note8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
-    </h1>
+    <a href="/2017/06/02/note9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          初探mongodb（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/25/note7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前后端分离实践-gulp+express</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note5/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note5/">Gulp 配置（五）---图片篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">base64</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spriter</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note6/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note6/">git日常提交步骤-基本命令行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -618,8 +354,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
