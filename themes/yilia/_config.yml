@@ -54,7 +54,7 @@ alipay:
 weixin:
 
 # Miscellaneous
-baidu_analytics: 'true'
+baidu_analytics: '0414fb223af2916c7c7c2807876261df'
 google_analytics: ''
 favicon: /img/td.jpg
 
