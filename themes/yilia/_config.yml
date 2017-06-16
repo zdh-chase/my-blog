@@ -28,7 +28,7 @@ rss: /atom.xml
 # 是否需要修改 root 路径
 # 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，
 # 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。
-root: 
+root:
 
 # Content
 
@@ -49,12 +49,12 @@ reward_type: 2
 # 打赏wording
 reward_wording: '谢谢你请我吃糖果'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-alipay: 
+alipay:
 # 微信二维码图片地址
-weixin: 
+weixin:
 
 # Miscellaneous
-baidu_analytics: ''
+baidu_analytics: 'true'
 google_analytics: ''
 favicon: /img/td.jpg
 
@@ -95,5 +95,3 @@ friends:
   jianhuicode: http://www.cnblogs.com/lmf-techniques/
 
 aboutme: 毕业于温职，<br>前端小菜鸟<br><br>路漫漫其修远兮，<br>吾将上下而求索<br><br>心怀不惧，<br>方能翱翔于天际
-
-
