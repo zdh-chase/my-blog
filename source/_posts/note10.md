@@ -7,7 +7,7 @@ tags:
 
 <!--more-->
 
-## 1.IE8、IE9  ajax跨域不发起请求
+## 1.IE8、IE9  ajax跨域不发起请求111
 
 W3C CORS（跨域资源共享）是对于跨域请求的一个规范，目前各个主流浏览器都实现了这个规范，IE8开始，增加了XDomainRequest作为跨域请求的对象，而Firefox与Chrom则CORS直接实现在XMLHttpRequest对象中，更方便使用。不过IE10中，XMLHttpRequest对象也实现了CORS。
 
