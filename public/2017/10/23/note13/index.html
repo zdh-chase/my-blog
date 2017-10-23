@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Archives: 2017/5 | 博博博客</title>
+  <title>移动端开发笔记本 | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/archives/2017/05/index.html">
+  <meta name="description" content="移动wap开发笔记…">
+<meta name="keywords" content="移动端wap开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端开发笔记本">
+<meta property="og:url" content="http://zengdh.com/2017/10/23/note13/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="移动wap开发笔记…">
+<meta property="og:updated_time" content="2017-10-23T03:16:25.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="移动端开发笔记本">
+<meta name="twitter:description" content="移动wap开发笔记…">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -148,348 +150,165 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note13" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动端开发笔记本
+    </h1>
+  
+
+        
+        <a href="/2017/10/23/note13/" class="archive-article-date">
+  	<time datetime="2017-10-23T05:36:42.167Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>移动wap开发笔记…</p>
+<a id="more"></a>
+<h2 id="1-移动端rem布局"><a href="#1-移动端rem布局" class="headerlink" title="1.移动端rem布局"></a>1.移动端rem布局</h2><p>通过js动态计算html的font-size值，通过rem作为单位进行开发，推荐使用sass、scss等预编译css开发工具，方便数值转换，或者用sublime插件转换<br>js代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">resize</span></span>()&#123;</div><div class="line">  var e=(navigator.userAgent,+document.documentElement.clientWidth/750)*100;</div><div class="line">  window.remFontSize=e=100&gt;e?e:100,</div><div class="line">  document.documentElement.style.fontSize=e+<span class="string">"px"</span></div><div class="line">&#125;</div><div class="line">var b=null,ua=navigator.userAgent;window.addEventListener(<span class="string">"resize"</span>,<span class="function"><span class="title">function</span></span>()&#123;clearTimeout(b),b=<span class="built_in">set</span>Timeout(resize,50)&#125;,!1),resize()</div></pre></td></tr></table></figure></p>
+<p>或者采用手淘flexible计算<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line">;(<span class="keyword">function</span>(win, lib) &#123;</div><div class="line">    var doc = win.document;</div><div class="line">    var docEl = doc.documentElement;</div><div class="line">    var metaEl = doc.querySelector(<span class="string">'meta[name="viewport"]'</span>);</div><div class="line">    var flexibleEl = doc.querySelector(<span class="string">'meta[name="flexible"]'</span>);</div><div class="line">    var dpr = 0;</div><div class="line">    var scale = 0;</div><div class="line">    var tid;</div><div class="line">    var flexible = lib.flexible || (lib.flexible = &#123;&#125;);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (metaEl) &#123;</div><div class="line">        //console.warn(<span class="string">'将根据已有的meta标签来设置缩放比例'</span>);</div><div class="line">        var match = metaEl.getAttribute(<span class="string">'content'</span>).match(/initial\-scale=([\d\.]+)/);</div><div class="line">        <span class="keyword">if</span> (match) &#123;</div><div class="line">            scale = parseFloat(match[1]);</div><div class="line">            dpr = parseInt(1 / scale);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (flexibleEl) &#123;</div><div class="line">        var content = flexibleEl.getAttribute(<span class="string">'content'</span>);</div><div class="line">        <span class="keyword">if</span> (content) &#123;</div><div class="line">            var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);</div><div class="line">            var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);</div><div class="line">            <span class="keyword">if</span> (initialDpr) &#123;</div><div class="line">                dpr = parseFloat(initialDpr[1]);</div><div class="line">                scale = parseFloat((1 / dpr).toFixed(2));</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (maximumDpr) &#123;</div><div class="line">                dpr = parseFloat(maximumDpr[1]);</div><div class="line">                scale = parseFloat((1 / dpr).toFixed(2));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</div><div class="line">        var isAndroid = win.navigator.appVersion.match(/android/gi);</div><div class="line">        var isIPhone = win.navigator.appVersion.match(/iphone/gi);</div><div class="line">        var devicePixelRatio = win.devicePixelRatio;</div><div class="line">        <span class="keyword">if</span> (isIPhone) &#123;</div><div class="line">            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</div><div class="line">            <span class="keyword">if</span> (devicePixelRatio &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) &#123;</div><div class="line">                dpr = 3;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2))&#123;</div><div class="line">                dpr = 2;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                dpr = 1;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            // 其他设备下，仍旧使用1倍的方案</div><div class="line">            dpr = 1;</div><div class="line">        &#125;</div><div class="line">        scale = 1 / dpr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    docEl.setAttribute(<span class="string">'data-dpr'</span>, dpr);</div><div class="line">    <span class="keyword">if</span> (!metaEl) &#123;</div><div class="line">        metaEl = doc.createElement(<span class="string">'meta'</span>);</div><div class="line">        metaEl.setAttribute(<span class="string">'name'</span>, <span class="string">'viewport'</span>);</div><div class="line">        metaEl.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + scale + <span class="string">', maximum-scale='</span> + scale + <span class="string">', minimum-scale='</span> + scale + <span class="string">', user-scalable=no'</span>);</div><div class="line">        <span class="keyword">if</span> (docEl.firstElementChild) &#123;</div><div class="line">            docEl.firstElementChild.appendChild(metaEl);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            var wrap = doc.createElement(<span class="string">'div'</span>);</div><div class="line">            wrap.appendChild(metaEl);</div><div class="line">            doc.write(wrap.innerHTML);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">refreshRem</span></span>()&#123;</div><div class="line">        var width = docEl.getBoundingClientRect().width;</div><div class="line">        // <span class="keyword">if</span> (width / dpr &gt; 540) &#123;</div><div class="line">        //     width = 540 * dpr;</div><div class="line">        // &#125;</div><div class="line">        //var rem = width / 10;</div><div class="line">        var rem = 100 * (width / 750);</div><div class="line">        docEl.style.fontSize = rem + <span class="string">'px'</span>;</div><div class="line">        flexible.rem = win.rem = rem;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    win.addEventListener(<span class="string">'resize'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        clearTimeout(tid);</div><div class="line">        tid = <span class="built_in">set</span>Timeout(refreshRem, 300);</div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line">    win.addEventListener(<span class="string">'pageshow'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">        <span class="keyword">if</span> (e.persisted) &#123;</div><div class="line">            clearTimeout(tid);</div><div class="line">            tid = <span class="built_in">set</span>Timeout(refreshRem, 300);</div><div class="line">        &#125;</div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (doc.readyState === <span class="string">'complete'</span>) &#123;</div><div class="line">        doc.body.style.fontSize = 12 * dpr + <span class="string">'px'</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        doc.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="keyword">function</span>(e) &#123;</div><div class="line">            doc.body.style.fontSize = 12 * dpr + <span class="string">'px'</span>;</div><div class="line">        &#125;, <span class="literal">false</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    refreshRem();</div><div class="line"></div><div class="line">    flexible.dpr = win.dpr = dpr;</div><div class="line">    flexible.refreshRem = refreshRem;</div><div class="line">    flexible.rem2px = <span class="keyword">function</span>(d) &#123;</div><div class="line">        var val = parseFloat(d) * this.rem;</div><div class="line">        <span class="keyword">if</span> (typeof d === <span class="string">'string'</span> &amp;&amp; d.match(/rem$/)) &#123;</div><div class="line">            val += <span class="string">'px'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> val;</div><div class="line">    &#125;</div><div class="line">    flexible.px2rem = <span class="keyword">function</span>(d) &#123;</div><div class="line">        var val = parseFloat(d) / this.rem;</div><div class="line">        <span class="keyword">if</span> (typeof d === <span class="string">'string'</span> &amp;&amp; d.match(/px$/)) &#123;</div><div class="line">            val += <span class="string">'rem'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> val;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)(window, window[<span class="string">'lib'</span>] || (window[<span class="string">'lib'</span>] = &#123;&#125;));</div></pre></td></tr></table></figure></p>
+<h2 id="2-移动端IOS-click事件点击无效"><a href="#2-移动端IOS-click事件点击无效" class="headerlink" title="2.移动端IOS click事件点击无效"></a>2.移动端IOS click事件点击无效</h2><p>解决方案：<br>  1.将 click 事件直接绑定到目标元素（即 .target）上<br>  2.将目标元素换成 a或者 button 等可点击的元素<br>  3.将 click 事件委托到非 document 或 body 的父级元素上<br>  4.给目标元素加一条样式规则 cursor: pointer;<br>推荐使用第4种方案。</p>
+<h2 id="3-移动端wap视频"><a href="#3-移动端wap视频" class="headerlink" title="3.移动端wap视频"></a>3.移动端wap视频</h2><p>开发需求：检测当前网络状态，如果处于非wifi状态下，提示用户该网络处于非wifi状态，播放视频需要消耗手机流量<br>html5组件：video<br>第三方组件：tvp.player.js   zepto.js<br>开发思路：<br>1.网络状态检测<br>code:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var wifi = <span class="literal">true</span>;</div><div class="line">var ua = window.navigator.userAgent;</div><div class="line">var con = window.navigator.connection;</div><div class="line">// 如果是微信</div><div class="line"><span class="keyword">if</span>(/MicroMessenger/.test(ua))&#123;</div><div class="line">// 如果是微信6.0以上版本，用UA来判断</div><div class="line"><span class="keyword">if</span>(/NetType/.test(ua))&#123;</div><div class="line"><span class="keyword">if</span>(ua.match(/NetType\/(\S*)/)[1] != <span class="string">'WIFI'</span>)&#123;</div><div class="line">wifi = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">// 如果是微信6.0以下版本，调用微信私有接口WeixinJSBridge</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">document.addEventListener(<span class="string">"WeixinJSBridgeReady"</span>,<span class="keyword">function</span> <span class="function"><span class="title">onBridgeReady</span></span>()&#123;</div><div class="line">WeixinJSBridge.invoke(<span class="string">'getNetworkType'</span>,&#123;&#125;,<span class="keyword">function</span>(e)&#123;</div><div class="line"><span class="keyword">if</span>(e.err_msg != <span class="string">"network_type:wifi"</span>)&#123;</div><div class="line">wifi = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">// 如果支持navigator.connection</div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(con)&#123;</div><div class="line">var network = con.type;</div><div class="line"><span class="keyword">if</span>(network != <span class="string">"wifi"</span> &amp;&amp; network != <span class="string">"2"</span> &amp;&amp; network != <span class="string">"unknown"</span>)&#123;  //unknown是为了兼容Chrome Canary</div><div class="line">wifi = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>2.初始化video组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var video = new tvp.VideoInfo();</div><div class="line">var videoId = <span class="string">''</span>;//视频vid</div><div class="line">var videoPic = <span class="string">''</span>;//默认图片地址</div><div class="line">video.setVid(videoId);//视频vid</div><div class="line">var player = new tvp.Player();//视频高宽</div><div class="line">player.setCurVideo(video);</div><div class="line">player.addParam(<span class="string">"autoplay"</span>,<span class="string">"0"</span>);//是否自动播放，1为自动播放，0为不自动播放</div><div class="line">player.addParam(<span class="string">"showend"</span>,0);</div><div class="line">player.addParam(<span class="string">"adplay"</span>,0);</div><div class="line">player.addParam(<span class="string">"wmode"</span>,<span class="string">"transparent"</span>);</div><div class="line">player.addParam(<span class="string">"controls"</span>,<span class="string">"0"</span>);</div><div class="line">player.addParam(<span class="string">"preload"</span>,<span class="string">"none"</span>);</div><div class="line">player.addParam(<span class="string">"pic"</span>,videoPic);//默认图片地址</div><div class="line">//  player.addParam(<span class="string">"flashskin"</span>, <span class="string">""</span>);//是否调用精简皮肤，不使用则删掉此行代码</div><div class="line">player.write(<span class="string">"videoCon"</span>);</div></pre></td></tr></table></figure></p>
+<p>3.判断网络状态选择不同的显示方式<br>4.点击播放时，Android会自动全屏并显示加载动画百分比，ios会延迟反应，等加载一段才弹出视频窗口，这里对ios做一个加载检测处理，在弹出视频窗口之前做一个动画过渡<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">video.onplay = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">var checkPlay=<span class="built_in">set</span>Interval(<span class="function"><span class="title">function</span></span>()&#123;//检测currentTime是否开始播放</div><div class="line"><span class="keyword">if</span>(video.currentTime&gt;0) &#123;</div><div class="line">//去掉加载动画，结束定时器检测</div><div class="line">clearInterval(checkPlay);</div><div class="line">&#125;;</div><div class="line">&#125;,50)</div><div class="line">&#125;</div><div class="line">//点击继续播放事件</div><div class="line">$(<span class="string">'body'</span>).on(<span class="string">'click'</span>,<span class="string">'播放按钮'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">//去掉遮罩，显示加载动画</div><div class="line">video.play();</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端wap开发</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/10/23/note13/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note5/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note5/">Gulp 配置（五）---图片篇</a>
-    </h1>
+    <a href="/2017/10/23/note14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          css预编译工具-sass
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/23/note12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css预编译工具-sass</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">base64</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spriter</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note6/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note6/">git日常提交步骤-基本命令行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -512,8 +331,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

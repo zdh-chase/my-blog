@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>Archives: 2017/5 | 博博博客</title>
+  <title>css预编译工具-sass | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/archives/2017/05/index.html">
+  <meta name="description" content="记录sass使用的日常….">
+<meta name="keywords" content="sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css预编译工具-sass">
+<meta property="og:url" content="http://zengdh.com/2017/10/23/note14/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="记录sass使用的日常….">
+<meta property="og:updated_time" content="2017-10-23T03:28:32.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="css预编译工具-sass">
+<meta name="twitter:description" content="记录sass使用的日常….">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -148,348 +150,150 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-note14" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
+    <h1 class="article-title" itemprop="name">
+      css预编译工具-sass
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/23/note14/" class="archive-article-date">
+  	<time datetime="2017-10-23T05:36:54.238Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录sass使用的日常….</p>
+<a id="more"></a>
+<h2 id="常用mixin"><a href="#常用mixin" class="headerlink" title="常用mixin"></a>常用mixin</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">@mixin font-dpr(<span class="variable">$font</span>-size) &#123;</div><div class="line">  font-size: <span class="variable">$font</span>-size;</div><div class="line">  [data-dpr=<span class="string">"2"</span>] &amp; &#123;</div><div class="line">    font-size: <span class="variable">$font</span>-size * 2;</div><div class="line">  &#125;</div><div class="line">  [data-dpr=<span class="string">"3"</span>] &amp; &#123;</div><div class="line">    font-size: <span class="variable">$font</span>-size * 3;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$baseFontSize</span>: 100;</div><div class="line"><span class="variable">$FontSize</span>: 16;</div><div class="line">@mixin px2rem(<span class="variable">$name</span>, <span class="variable">$px1</span>)&#123;</div><div class="line">  <span class="comment">#&#123;$name&#125;: ($px1 / $baseFontSize) * 1rem;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin <span class="built_in">bg</span>-image(<span class="variable">$url</span>,<span class="variable">$type</span>) &#123;</div><div class="line">  background-image: url(<span class="variable">$url</span> + <span class="string">"@2x."</span>+<span class="variable">$type</span>);</div><div class="line">  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) &#123;</div><div class="line">    background-image: url(<span class="variable">$url</span> + <span class="string">"@3x."</span>+<span class="variable">$type</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin <span class="function"><span class="title">clearfix</span></span>() &#123;</div><div class="line">    &amp;:before,</div><div class="line">    &amp;:after &#123;</div><div class="line">        content: <span class="string">""</span>;</div><div class="line">        display: table;</div><div class="line">    &#125;</div><div class="line">    &amp;:after &#123;</div><div class="line">        clear: both;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin remCalc(<span class="variable">$props</span>,<span class="variable">$sizes</span>,<span class="variable">$base</span>:<span class="variable">$baseFontSize</span>)&#123;</div><div class="line"> <span class="variable">$values</span>: ();</div><div class="line"> <span class="variable">$sublists</span>: <span class="literal">false</span>;</div><div class="line">  @each <span class="variable">$s</span> <span class="keyword">in</span> <span class="variable">$sizes</span> &#123;</div><div class="line">     @<span class="keyword">if</span> <span class="built_in">type</span>-of(<span class="variable">$s</span>) == list &#123;</div><div class="line">       <span class="variable">$sublists</span>: <span class="literal">true</span>; <span class="variable">$vv</span>: ();</div><div class="line">        @each <span class="variable">$ss</span> <span class="keyword">in</span> <span class="variable">$s</span> &#123;</div><div class="line">           <span class="variable">$vv</span>: append(<span class="variable">$vv</span>,<span class="keyword">if</span>(<span class="built_in">type</span>-of(<span class="variable">$ss</span>) == number, <span class="comment">#&#123;$ss / $base&#125;rem, $ss));</span></div><div class="line">         &#125;</div><div class="line">         <span class="variable">$values</span>: append(<span class="variable">$values</span>,join((), <span class="variable">$vv</span>));</div><div class="line">       &#125; @<span class="keyword">else</span> &#123;</div><div class="line">          <span class="variable">$values</span>: append(<span class="variable">$values</span>,<span class="keyword">if</span>(<span class="built_in">type</span>-of(<span class="variable">$s</span>) == number, <span class="comment">#&#123;$s / $base&#125;rem, $s));</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  <span class="variable">$value</span>: join((), <span class="variable">$values</span>, <span class="keyword">if</span>(<span class="variable">$sublists</span>,comma,space));</div><div class="line">  @each <span class="variable">$prop</span> <span class="keyword">in</span> <span class="variable">$props</span> &#123;<span class="comment">#&#123;$prop&#125;: $value&#125;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin css3(<span class="variable">$property</span>, <span class="variable">$value</span>) &#123;</div><div class="line">    @each <span class="variable">$prefix</span> <span class="keyword">in</span> -webkit-,</div><div class="line">    -moz-,</div><div class="line">    -ms-,</div><div class="line">    -o-,</div><div class="line">    <span class="string">''</span> &#123;</div><div class="line">        <span class="comment">#&#123;$prefix&#125;#&#123;$property&#125;: ($value / $baseFontSize) * 1rem;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@mixin css3fn(<span class="variable">$property</span>, <span class="variable">$value</span>) &#123;</div><div class="line">    @each <span class="variable">$prefix</span> <span class="keyword">in</span> -webkit-,</div><div class="line">    -moz-,</div><div class="line">    -ms-,</div><div class="line">    -o-,</div><div class="line">    <span class="string">''</span> &#123;</div><div class="line">        <span class="comment">#&#123;$prefix&#125;#&#123;$property&#125;: $value;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/10/23/note14/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note5/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note5/">Gulp 配置（五）---图片篇</a>
-    </h1>
+  
+    <a href="/2017/10/23/note13/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端开发笔记本</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">base64</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spriter</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note6/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note6/">git日常提交步骤-基本命令行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -512,8 +316,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
