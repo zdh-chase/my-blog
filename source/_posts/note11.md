@@ -220,3 +220,29 @@ $('body').on('click','播放按钮',function(){
 video.play();
 })
 ```
+
+## 4.移动端wap唤起QQ链接
+需求:点击QQ链接弹出QQ聊天窗口，如果当前手机没安装QQ则跳转至下载app链接
+code:
+``` bash
+var userAgentInfo = navigator.userAgent;
+var isAndroid = userAgentInfo.indexOf('Android') > -1 || userAgentInfo.indexOf('Adr') > -1;//android终端
+var isiOS = !!userAgentInfo.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+var qqId = '客服QQ号码';
+
+var loadDateTime = new Date();
+var checkTime = setTimeout(function () {
+var timeOutDateTime = new Date();
+if (!loadDateTime || timeOutDateTime - loadDateTime <5010) {//5秒响应时长
+if(isAndroid) {
+location.href="https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
+}else if(isiOS) {
+location.href="https://itunes.apple.com/cn/app/qq/id444934666?mt=8";
+}else {
+location.href="mqqwpa://im/chat?chat_type=wpa&uin="+qqId+"&version=1&src_type=web&web_src=bjhuli.com";
+};
+}
+clearTimeout(checkTime);
+},5000);
+location.href = "mqqwpa://im/chat?chat_type=wpa&uin="+qqId+"&version=1&src_type=web&web_src=bjhuli.com";
+```
