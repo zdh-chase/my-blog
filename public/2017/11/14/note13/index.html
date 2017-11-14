@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>git日常提交步骤-基本命令行 | 博博博客</title>
+  <title>Node.js 路由配置及模板引入 | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
-<meta name="keywords" content="git">
+  <meta name="description" content="node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等.. express框架及nunjucks模板引入12345678910111213var express = require(&apos;express&apos;);var nunjucks = require(&apos;nunjucks&apos;);var app = express();nunjucks.configure(">
+<meta name="keywords" content="express,node.js,nunjucks,request-promise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git日常提交步骤-基本命令行">
-<meta property="og:url" content="http://zengdh.com/2017/05/25/note6/index.html">
+<meta property="og:title" content="Node.js 路由配置及模板引入">
+<meta property="og:url" content="http://zengdh.com/2017/11/14/note13/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
-<meta property="og:updated_time" content="2017-05-25T02:50:44.877Z">
+<meta property="og:description" content="node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等.. express框架及nunjucks模板引入12345678910111213var express = require(&apos;express&apos;);var nunjucks = require(&apos;nunjucks&apos;);var app = express();nunjucks.configure(">
+<meta property="og:updated_time" content="2017-11-14T08:16:05.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git日常提交步骤-基本命令行">
-<meta name="twitter:description" content="1.下载代码1git clone http//xxxx.git –b dev xxxx_dev_local">
+<meta name="twitter:title" content="Node.js 路由配置及模板引入">
+<meta name="twitter:description" content="node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等.. express框架及nunjucks模板引入12345678910111213var express = require(&apos;express&apos;);var nunjucks = require(&apos;nunjucks&apos;);var app = express();nunjucks.configure(">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -150,42 +150,36 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-note6" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-note13" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git日常提交步骤-基本命令行
+      Node.js 路由配置及模板引入
     </h1>
   
 
         
-        <a href="/2017/05/25/note6/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+        <a href="/2017/11/14/note13/" class="archive-article-date">
+  	<time datetime="2017-11-14T03:32:24.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
+        <p>node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等..</p>
+<h2 id="express框架及nunjucks模板引入"><a href="#express框架及nunjucks模板引入" class="headerlink" title="express框架及nunjucks模板引入"></a>express框架及nunjucks模板引入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var nunjucks = require(<span class="string">'nunjucks'</span>);</div><div class="line"></div><div class="line">var app = express();</div><div class="line">nunjucks.configure(<span class="string">'views'</span>, &#123;</div><div class="line">    autoescape: <span class="literal">true</span>,</div><div class="line">    express: app,</div><div class="line">    watch:<span class="literal">true</span>,</div><div class="line">    noCache: <span class="literal">true</span></div><div class="line">&#125;);</div><div class="line">// view engine setup</div><div class="line">app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'views'</span>));</div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>);</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>注解：<br>1)   -b dev   指定想要下载的分支，去掉省略的话下载的是默认分支是master（注：默认分支可以修改）<br>2)   xxxx_dev_local是我想要在本地创建的git库文件夹名字，去掉省略的话下载好的git库名字是xxxx git库的名字，建议使用这种重命名方式</p>
-<h2 id="2-更新代码"><a href="#2-更新代码" class="headerlink" title="2.更新代码"></a>2.更新代码</h2><p>注：每次修改前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
-<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<h2 id="3-修改、增加或删除代码文件到git-index缓存中"><a href="#3-修改、增加或删除代码文件到git-index缓存中" class="headerlink" title="3.修改、增加或删除代码文件到git index缓存中"></a>3.修改、增加或删除代码文件到git index缓存中</h2><p>修改或新增加代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add file_name</div></pre></td></tr></table></figure></p>
-<p>删除代码文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm file_name</div></pre></td></tr></table></figure></p>
-<h2 id="4-提交本地git库index缓存中的修改"><a href="#4-提交本地git库index缓存中的修改" class="headerlink" title="4.提交本地git库index缓存中的修改"></a>4.提交本地git库index缓存中的修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –m “just a <span class="built_in">test</span> <span class="keyword">for</span> commit ”</div></pre></td></tr></table></figure>
-<p>如果本地修改不对或commit的LOG需要修改可以使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit –-amend //修复上一次提交，不要修改Merge提交</div></pre></td></tr></table></figure></p>
-<p>##5.更新代码<br>注：每次push前养成同步更新代码的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull –rebase</div></pre></td></tr></table></figure></p>
-<p>如果提示冲突，说明本地git库中未入库的提交中有修改和代码库中冲突了，修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add 冲突文件名               //加入git index中</div><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<p>##6.推送提交到服务器上的git库中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push</div></pre></td></tr></table></figure></p>
-<p>注：默认会推送到我们下载git库时的-b 后面加的那个分支，没有加默认是master，这个命令完整版实际上是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin 当前分支名:我们下载的分支名</div></pre></td></tr></table></figure></p>
-<p>##7.解消代码冲突<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git merge xxxx_branch 或者 git pull 时 or</div><div class="line">git rebase xxxx_branch 或者 git pull --rebase 时</div></pre></td></tr></table></figure></p>
-<p>解消方法也是修改冲突文件并删除冲突标识&lt;&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase –<span class="built_in">continue</span>                 //继续更新到最新的base上</div></pre></td></tr></table></figure></p>
-<p>over</p>
+<h2 id="路由配置routers-js"><a href="#路由配置routers-js" class="headerlink" title="路由配置routers.js"></a>路由配置routers.js</h2><p>第一种写法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res, next) &#123;</div><div class="line">    res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>&#125;);</div><div class="line">&#125;);</div><div class="line">module.exports = router;</div></pre></td></tr></table></figure></p>
+<p>第二种写法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="keyword">function</span>(app) &#123;</div><div class="line">  app.get(<span class="string">'自定义路由地址'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">    res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>&#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="服务端接口请求"><a href="#服务端接口请求" class="headerlink" title="服务端接口请求"></a>服务端接口请求</h2><p>单条接口请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var router = express.Router();</div><div class="line">var request = require(<span class="string">'request'</span>);</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req,res,next) &#123;</div><div class="line">   request(&#123;url: <span class="string">''</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;,<span class="keyword">function</span>(error, response, body) &#123;</div><div class="line">      var data =  JSON.parse(body);//数据处理</div><div class="line">      res.render(<span class="string">'页面地址'</span>, &#123; data: data&#125;);</div><div class="line">  &#125;&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>多条接口并发请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var request = require(<span class="string">'request-promise'</span>);</div><div class="line">var obj = <span class="keyword">function</span>(app) &#123;</div><div class="line">  app.get(<span class="string">'路由地址'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">    var api1 = request(&#123;url:<span class="string">'接口地址'</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;);</div><div class="line">    var api2 = request(&#123;url:<span class="string">'接口地址'</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;);</div><div class="line">    Promise.all([api1,api2]).then(<span class="keyword">function</span>(results) &#123;</div><div class="line">        var data1 = JSON.parse(results[0]).result.obj;</div><div class="line">        var data2 = JSON.parse(results[1]).result.obj;</div><div class="line">        res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>, data1: data1, data2: data2&#125;);</div><div class="line">    &#125;).catch(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      </div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">module.exports = obj;</div></pre></td></tr></table></figure></p>
+<h2 id="app-js-引入路由配置"><a href="#app-js-引入路由配置" class="headerlink" title="app.js 引入路由配置"></a>app.js 引入路由配置</h2><p>第一种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = require(<span class="string">'router文件夹下的单个路由配置文件'</span>);</div><div class="line">var app = express();</div><div class="line">app.use(<span class="string">'自定义路由地址'</span>, obj);</div></pre></td></tr></table></figure></p>
+<p>第二种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = require(<span class="string">'router文件夹下的单个路由配置文件'</span>);</div><div class="line">var app = express();</div><div class="line">obj(app);</div></pre></td></tr></table></figure></p>
+<h2 id="错误路由指向"><a href="#错误路由指向" class="headerlink" title="错误路由指向"></a>错误路由指向</h2><p>当页面发生404、500等错误时，路由配置指向<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">function</span>(err, req, res, next) &#123;</div><div class="line">  //<span class="built_in">set</span> locals, only providing error <span class="keyword">in</span> development</div><div class="line">  //res.locals.message = err.message;</div><div class="line">  //res.locals.error = req.app.get(<span class="string">'env'</span>) === <span class="string">'development'</span> ? err:err;</div><div class="line"></div><div class="line">  // render the error page</div><div class="line">  res.status(err.status);//http错误状态码</div><div class="line">  res.render(<span class="string">'error页面地址'</span>,&#123;error:err&#125;);//根据错误状态码渲染不同模板数据</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 
       
 
@@ -220,7 +214,19 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">node.js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">nunjucks</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">request-promise</a>
         		</li>
       		
 		</ul>
@@ -276,7 +282,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/05/25/note6/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/11/14/note13/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +296,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/05/25/note4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Gulp 配置（四）---模板篇
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/25/note5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Gulp 配置（五）---图片篇</div>
+    <a href="/2017/10/23/note12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css预编译工具-sass</div>
       <i class="icon-circle-right"></i>
     </a>
   

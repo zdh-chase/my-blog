@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zengdh.com/"/>
-  <updated>2017-10-23T03:28:32.402Z</updated>
+  <updated>2017-11-14T08:16:05.892Z</updated>
   <id>http://zengdh.com/</id>
   
   <author>
@@ -16,11 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Node.js 路由配置及模板引入</title>
+    <link href="http://zengdh.com/2017/11/14/note13/"/>
+    <id>http://zengdh.com/2017/11/14/note13/</id>
+    <published>2017-11-14T03:32:24.446Z</published>
+    <updated>2017-11-14T08:16:05.892Z</updated>
+    
+    <content type="html"><![CDATA[<p>node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等..</p>
+<h2 id="express框架及nunjucks模板引入"><a href="#express框架及nunjucks模板引入" class="headerlink" title="express框架及nunjucks模板引入"></a>express框架及nunjucks模板引入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var nunjucks = require(<span class="string">'nunjucks'</span>);</div><div class="line"></div><div class="line">var app = express();</div><div class="line">nunjucks.configure(<span class="string">'views'</span>, &#123;</div><div class="line">    autoescape: <span class="literal">true</span>,</div><div class="line">    express: app,</div><div class="line">    watch:<span class="literal">true</span>,</div><div class="line">    noCache: <span class="literal">true</span></div><div class="line">&#125;);</div><div class="line">// view engine setup</div><div class="line">app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'views'</span>));</div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="路由配置routers-js"><a href="#路由配置routers-js" class="headerlink" title="路由配置routers.js"></a>路由配置routers.js</h2><p>第一种写法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var router = express.Router();</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res, next) &#123;</div><div class="line">    res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>&#125;);</div><div class="line">&#125;);</div><div class="line">module.exports = router;</div></pre></td></tr></table></figure></p>
+<p>第二种写法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="keyword">function</span>(app) &#123;</div><div class="line">  app.get(<span class="string">'自定义路由地址'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">    res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>&#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="服务端接口请求"><a href="#服务端接口请求" class="headerlink" title="服务端接口请求"></a>服务端接口请求</h2><p>单条接口请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var router = express.Router();</div><div class="line">var request = require(<span class="string">'request'</span>);</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req,res,next) &#123;</div><div class="line">   request(&#123;url: <span class="string">''</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;,<span class="keyword">function</span>(error, response, body) &#123;</div><div class="line">      var data =  JSON.parse(body);//数据处理</div><div class="line">      res.render(<span class="string">'页面地址'</span>, &#123; data: data&#125;);</div><div class="line">  &#125;&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>多条接口并发请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var request = require(<span class="string">'request-promise'</span>);</div><div class="line">var obj = <span class="keyword">function</span>(app) &#123;</div><div class="line">  app.get(<span class="string">'路由地址'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">    var api1 = request(&#123;url:<span class="string">'接口地址'</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;);</div><div class="line">    var api2 = request(&#123;url:<span class="string">'接口地址'</span>,gzip:<span class="literal">true</span>,headers:&#123;<span class="string">'User-Agent'</span>: <span class="string">'chrome'</span>&#125;&#125;);</div><div class="line">    Promise.all([api1,api2]).then(<span class="keyword">function</span>(results) &#123;</div><div class="line">        var data1 = JSON.parse(results[0]).result.obj;</div><div class="line">        var data2 = JSON.parse(results[1]).result.obj;</div><div class="line">        res.render(<span class="string">'页面地址'</span>, &#123; title: <span class="string">''</span>, data1: data1, data2: data2&#125;);</div><div class="line">    &#125;).catch(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      </div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">module.exports = obj;</div></pre></td></tr></table></figure></p>
+<h2 id="app-js-引入路由配置"><a href="#app-js-引入路由配置" class="headerlink" title="app.js 引入路由配置"></a>app.js 引入路由配置</h2><p>第一种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = require(<span class="string">'router文件夹下的单个路由配置文件'</span>);</div><div class="line">var app = express();</div><div class="line">app.use(<span class="string">'自定义路由地址'</span>, obj);</div></pre></td></tr></table></figure></p>
+<p>第二种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = require(<span class="string">'router文件夹下的单个路由配置文件'</span>);</div><div class="line">var app = express();</div><div class="line">obj(app);</div></pre></td></tr></table></figure></p>
+<h2 id="错误路由指向"><a href="#错误路由指向" class="headerlink" title="错误路由指向"></a>错误路由指向</h2><p>当页面发生404、500等错误时，路由配置指向<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">function</span>(err, req, res, next) &#123;</div><div class="line">  //<span class="built_in">set</span> locals, only providing error <span class="keyword">in</span> development</div><div class="line">  //res.locals.message = err.message;</div><div class="line">  //res.locals.error = req.app.get(<span class="string">'env'</span>) === <span class="string">'development'</span> ? err:err;</div><div class="line"></div><div class="line">  // render the error page</div><div class="line">  res.status(err.status);//http错误状态码</div><div class="line">  res.render(<span class="string">'error页面地址'</span>,&#123;error:err&#125;);//根据错误状态码渲染不同模板数据</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;node.js的一些基本路由配置，以及前端模板引擎引入，多接口请求并发及服务端渲染数据，跨域请求转发等..&lt;/p&gt;
+&lt;h2 id=&quot;express框架及nunjucks模板引入&quot;&gt;&lt;a href=&quot;#express框架及nunjucks模板引入&quot; class=&quot;headerlink&quot; title=&quot;express框架及nunjucks模板引入&quot;&gt;&lt;/a&gt;express框架及nunjucks模板引入&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var express = require(&lt;span class=&quot;string&quot;&gt;&#39;express&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var nunjucks = require(&lt;span class=&quot;string&quot;&gt;&#39;nunjucks&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var app = express();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;nunjucks.configure(&lt;span class=&quot;string&quot;&gt;&#39;views&#39;&lt;/span&gt;, &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    autoescape: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    express: app,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    watch:&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    noCache: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// view engine setup&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;app.set(&lt;span class=&quot;string&quot;&gt;&#39;views&#39;&lt;/span&gt;, path.join(__dirname, &lt;span class=&quot;string&quot;&gt;&#39;views&#39;&lt;/span&gt;));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;app.set(&lt;span class=&quot;string&quot;&gt;&#39;view engine&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;html&#39;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="express" scheme="http://zengdh.com/tags/express/"/>
+    
+      <category term="node.js" scheme="http://zengdh.com/tags/node-js/"/>
+    
+      <category term="nunjucks" scheme="http://zengdh.com/tags/nunjucks/"/>
+    
+      <category term="request-promise" scheme="http://zengdh.com/tags/request-promise/"/>
+    
+  </entry>
+  
+  <entry>
     <title>css预编译工具-sass</title>
     <link href="http://zengdh.com/2017/10/23/note12/"/>
     <id>http://zengdh.com/2017/10/23/note12/</id>
     <published>2017-10-23T03:20:19.094Z</published>
-    <updated>2017-10-23T03:28:32.402Z</updated>
+    <updated>2017-11-13T02:23:35.259Z</updated>
     
     <content type="html"><![CDATA[<p>记录sass使用的日常….</p>
 <a id="more"></a>
@@ -229,15 +266,48 @@
     
       <category term="seajs" scheme="http://zengdh.com/tags/seajs/"/>
     
+      <category term="sass" scheme="http://zengdh.com/tags/sass/"/>
+    
       <category term="前后端分离" scheme="http://zengdh.com/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
     
       <category term="express" scheme="http://zengdh.com/tags/express/"/>
     
       <category term="browser-sync" scheme="http://zengdh.com/tags/browser-sync/"/>
     
-      <category term="sass" scheme="http://zengdh.com/tags/sass/"/>
-    
       <category term="ejs" scheme="http://zengdh.com/tags/ejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gulp 配置（四）---模板篇</title>
+    <link href="http://zengdh.com/2017/05/25/note4/"/>
+    <id>http://zengdh.com/2017/05/25/note4/</id>
+    <published>2017-05-25T02:50:44.876Z</published>
+    <updated>2017-05-25T02:50:44.876Z</updated>
+    
+    <content type="html"><![CDATA[<p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
+<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
+<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。&lt;/p&gt;
+&lt;h2 id=&quot;gulp-file-include&quot;&gt;&lt;a href=&quot;#gulp-file-include&quot; class=&quot;headerlink&quot; title=&quot;gulp-file-include&quot;&gt;&lt;/a&gt;gulp-file-include&lt;/h2&gt;&lt;h4 id=&quot;需要引入的依赖&quot;&gt;&lt;a href=&quot;#需要引入的依赖&quot; class=&quot;headerlink&quot; title=&quot;需要引入的依赖&quot;&gt;&lt;/a&gt;需要引入的依赖&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fileinclude  = require(&lt;span class=&quot;string&quot;&gt;&#39;gulp-file-include&#39;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
+    
+      <category term="gulp-file-include" scheme="http://zengdh.com/tags/gulp-file-include/"/>
     
   </entry>
   
@@ -314,39 +384,6 @@
   </entry>
   
   <entry>
-    <title>Gulp 配置（四）---模板篇</title>
-    <link href="http://zengdh.com/2017/05/25/note4/"/>
-    <id>http://zengdh.com/2017/05/25/note4/</id>
-    <published>2017-05-25T02:50:44.876Z</published>
-    <updated>2017-05-25T02:50:44.876Z</updated>
-    
-    <content type="html"><![CDATA[<p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
-<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
-<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>over</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。&lt;/p&gt;
-&lt;h2 id=&quot;gulp-file-include&quot;&gt;&lt;a href=&quot;#gulp-file-include&quot; class=&quot;headerlink&quot; title=&quot;gulp-file-include&quot;&gt;&lt;/a&gt;gulp-file-include&lt;/h2&gt;&lt;h4 id=&quot;需要引入的依赖&quot;&gt;&lt;a href=&quot;#需要引入的依赖&quot; class=&quot;headerlink&quot; title=&quot;需要引入的依赖&quot;&gt;&lt;/a&gt;需要引入的依赖&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fileinclude  = require(&lt;span class=&quot;string&quot;&gt;&#39;gulp-file-include&#39;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
-    
-      <category term="gulp-file-include" scheme="http://zengdh.com/tags/gulp-file-include/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Gulp 配置（三）---service篇</title>
     <link href="http://zengdh.com/2017/05/25/note3/"/>
     <id>http://zengdh.com/2017/05/25/note3/</id>
@@ -383,50 +420,6 @@
       <category term="gulp-watch" scheme="http://zengdh.com/tags/gulp-watch/"/>
     
       <category term="gulp-connect" scheme="http://zengdh.com/tags/gulp-connect/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gulp 配置（一）---seaJs篇</title>
-    <link href="http://zengdh.com/2017/05/25/note/"/>
-    <id>http://zengdh.com/2017/05/25/note/</id>
-    <published>2017-05-25T02:50:44.874Z</published>
-    <updated>2017-05-25T02:50:44.874Z</updated>
-    
-    <content type="html"><![CDATA[<p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
-<ul>
-<li>gulp安装就不赘述</li>
-</ul>
-<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="配置seajs"><a href="#配置seajs" class="headerlink" title="配置seajs"></a>配置seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">seajs.config(&#123;</div><div class="line">	 paths: &#123;</div><div class="line">             <span class="string">'src'</span>: <span class="string">'../../src/'</span>  //路径配置</div><div class="line">	 &#125;,</div><div class="line">         <span class="built_in">alias</span>: &#123;//别名配置</div><div class="line">             jquery:<span class="string">'jquery.js'</span>,</div><div class="line">             index:<span class="string">'src/js/index.js'</span></div><div class="line">         &#125;,</div><div class="line">         map: [//映射配置</div><div class="line">	     [ /^(.*\.(?:css|js))(.*)$/i, <span class="string">'$1?201703281819'</span> ]</div><div class="line">	 ],</div><div class="line">	 preload: [<span class="string">'jquery'</span>]  // 预加载项</div><div class="line">	 &#125;);</div><div class="line">seajs.use([<span class="string">"jquery"</span>,<span class="string">"index"</span>]);  //模块加载</div></pre></td></tr></table></figure>
-<p><a href="http://yslove.net/seajs/" target="_blank">更多配置项&gt;&gt;</a></p>
-<h2 id="新建两个js文件a-js和b-js"><a href="#新建两个js文件a-js和b-js" class="headerlink" title="新建两个js文件a.js和b.js"></a>新建两个js文件a.js和b.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">a.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var AJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自a.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=AJS;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">b.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var BJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自b.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=BJS;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h2 id="index-js引入a-js和b-js的方法"><a href="#index-js引入a-js和b-js的方法" class="headerlink" title="index.js引入a.js和b.js的方法"></a>index.js引入a.js和b.js的方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">        var AJS=require(<span class="string">'a'</span>);</div><div class="line">        var BJS=require(<span class="string">'b'</span>);</div><div class="line">	var INDEX=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            console.log(<span class="string">'来自index.js的内容'</span>);</div><div class="line">            AJS.aDom();</div><div class="line">            BJS.bDom();</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=INDEX.init();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h2 id="打开引入index-js的html文件"><a href="#打开引入index-js的html文件" class="headerlink" title="打开引入index.js的html文件"></a>打开引入index.js的html文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">seajs.use([<span class="string">"index"</span>]); //引入index.js</div></pre></td></tr></table></figure>
-<p><img src="/img/img1.png"></p>
-<p>这里可以看到index.js中成功引入了a.js和b.js的方法，再看一下Network<br><img src="/img/img2.png"><br>这边加载了三个js文件，这并不符合我的需求，我希望我引入某个js文件的方法时，只需要加载那个方法，而不是整个js文件都加载进来，所以我需要合并js，添加一个gulp task任务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'mergeScripts'</span>,<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="built_in">return</span> gulp.src([<span class="string">'./src/js/a.js'</span>,<span class="string">'./src/js/b.js'</span>,<span class="string">'./src/js/index.js'</span>])    </div><div class="line">            .pipe(uglify(&#123;//压缩js</div><div class="line">             mangle: <span class="literal">true</span>,//类型：Boolean 默认：<span class="literal">true</span> 是否修改变量名</div><div class="line">             mangle: &#123; except: [<span class="string">'require'</span>, <span class="string">'exports'</span>, <span class="string">'module'</span>, <span class="string">'$'</span>] &#125;//排除混淆关键字</div><div class="line">             &#125;))</div><div class="line">            .pipe(concat(<span class="string">'index.js'</span>))  //生成js</div><div class="line">            .pipe(gulp.dest(<span class="string">'./build/js/'</span>));  //生成合并后的js的路径   </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp mergeScripts</div></pre></td></tr></table></figure>
-<p><img src="/img/img3.png"><br>合并是合并了，但是还是加载了三个js<br>这里需要引入gulp-seajs-transport来具象化js模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> transport = <span class="built_in">require</span>(<span class="string">'gulp-seajs-transport'</span>);</div><div class="line">.pipe(transport());</div></pre></td></tr></table></figure></p>
-<p><img src="/img/img4.png"><br>完成，既加载了我所需要的方法，又减少了http请求<br>over</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具&lt;br&gt;这里我采用 &lt;a href=&quot;http://seajs.org/&quot; target=&quot;_blank&quot;&gt;seajs&lt;/a&gt;来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;gulp安装就不赘述&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;引入seajs&quot;&gt;&lt;a href=&quot;#引入seajs&quot; class=&quot;headerlink&quot; title=&quot;引入seajs&quot;&gt;&lt;/a&gt;引入seajs&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;../../src/js/sea.js&quot;&lt;/span&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
-    
-      <category term="seajs" scheme="http://zengdh.com/tags/seajs/"/>
-    
-      <category term="gulp-seajs-transport" scheme="http://zengdh.com/tags/gulp-seajs-transport/"/>
     
   </entry>
   
@@ -479,11 +472,55 @@
     
       <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
     
-      <category term="sass" scheme="http://zengdh.com/tags/sass/"/>
-    
       <category term="css" scheme="http://zengdh.com/tags/css/"/>
     
+      <category term="sass" scheme="http://zengdh.com/tags/sass/"/>
+    
       <category term="px3rem" scheme="http://zengdh.com/tags/px3rem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gulp 配置（一）---seaJs篇</title>
+    <link href="http://zengdh.com/2017/05/25/note/"/>
+    <id>http://zengdh.com/2017/05/25/note/</id>
+    <published>2017-05-25T02:50:44.874Z</published>
+    <updated>2017-05-25T02:50:44.874Z</updated>
+    
+    <content type="html"><![CDATA[<p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
+<ul>
+<li>gulp安装就不赘述</li>
+</ul>
+<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="配置seajs"><a href="#配置seajs" class="headerlink" title="配置seajs"></a>配置seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">seajs.config(&#123;</div><div class="line">	 paths: &#123;</div><div class="line">             <span class="string">'src'</span>: <span class="string">'../../src/'</span>  //路径配置</div><div class="line">	 &#125;,</div><div class="line">         <span class="built_in">alias</span>: &#123;//别名配置</div><div class="line">             jquery:<span class="string">'jquery.js'</span>,</div><div class="line">             index:<span class="string">'src/js/index.js'</span></div><div class="line">         &#125;,</div><div class="line">         map: [//映射配置</div><div class="line">	     [ /^(.*\.(?:css|js))(.*)$/i, <span class="string">'$1?201703281819'</span> ]</div><div class="line">	 ],</div><div class="line">	 preload: [<span class="string">'jquery'</span>]  // 预加载项</div><div class="line">	 &#125;);</div><div class="line">seajs.use([<span class="string">"jquery"</span>,<span class="string">"index"</span>]);  //模块加载</div></pre></td></tr></table></figure>
+<p><a href="http://yslove.net/seajs/" target="_blank">更多配置项&gt;&gt;</a></p>
+<h2 id="新建两个js文件a-js和b-js"><a href="#新建两个js文件a-js和b-js" class="headerlink" title="新建两个js文件a.js和b.js"></a>新建两个js文件a.js和b.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">a.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var AJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自a.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=AJS;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">b.js:</div><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">	var BJS=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        aDom:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">        	console.log(<span class="string">'来自b.js的内容'</span>);</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=BJS;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="index-js引入a-js和b-js的方法"><a href="#index-js引入a-js和b-js的方法" class="headerlink" title="index.js引入a.js和b.js的方法"></a>index.js引入a.js和b.js的方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</div><div class="line">        var AJS=require(<span class="string">'a'</span>);</div><div class="line">        var BJS=require(<span class="string">'b'</span>);</div><div class="line">	var INDEX=&#123;</div><div class="line">        init:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            console.log(<span class="string">'来自index.js的内容'</span>);</div><div class="line">            AJS.aDom();</div><div class="line">            BJS.bDom();</div><div class="line">        &#125;</div><div class="line">	&#125;;</div><div class="line">	module.exports=INDEX.init();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="打开引入index-js的html文件"><a href="#打开引入index-js的html文件" class="headerlink" title="打开引入index.js的html文件"></a>打开引入index.js的html文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">seajs.use([<span class="string">"index"</span>]); //引入index.js</div></pre></td></tr></table></figure>
+<p><img src="/img/img1.png"></p>
+<p>这里可以看到index.js中成功引入了a.js和b.js的方法，再看一下Network<br><img src="/img/img2.png"><br>这边加载了三个js文件，这并不符合我的需求，我希望我引入某个js文件的方法时，只需要加载那个方法，而不是整个js文件都加载进来，所以我需要合并js，添加一个gulp task任务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'mergeScripts'</span>,<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        <span class="built_in">return</span> gulp.src([<span class="string">'./src/js/a.js'</span>,<span class="string">'./src/js/b.js'</span>,<span class="string">'./src/js/index.js'</span>])    </div><div class="line">            .pipe(uglify(&#123;//压缩js</div><div class="line">             mangle: <span class="literal">true</span>,//类型：Boolean 默认：<span class="literal">true</span> 是否修改变量名</div><div class="line">             mangle: &#123; except: [<span class="string">'require'</span>, <span class="string">'exports'</span>, <span class="string">'module'</span>, <span class="string">'$'</span>] &#125;//排除混淆关键字</div><div class="line">             &#125;))</div><div class="line">            .pipe(concat(<span class="string">'index.js'</span>))  //生成js</div><div class="line">            .pipe(gulp.dest(<span class="string">'./build/js/'</span>));  //生成合并后的js的路径   </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp mergeScripts</div></pre></td></tr></table></figure>
+<p><img src="/img/img3.png"><br>合并是合并了，但是还是加载了三个js<br>这里需要引入gulp-seajs-transport来具象化js模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> transport = <span class="built_in">require</span>(<span class="string">'gulp-seajs-transport'</span>);</div><div class="line">.pipe(transport());</div></pre></td></tr></table></figure></p>
+<p><img src="/img/img4.png"><br>完成，既加载了我所需要的方法，又减少了http请求<br>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具&lt;br&gt;这里我采用 &lt;a href=&quot;http://seajs.org/&quot; target=&quot;_blank&quot;&gt;seajs&lt;/a&gt;来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gulp安装就不赘述&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;引入seajs&quot;&gt;&lt;a href=&quot;#引入seajs&quot; class=&quot;headerlink&quot; title=&quot;引入seajs&quot;&gt;&lt;/a&gt;引入seajs&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;../../src/js/sea.js&quot;&lt;/span&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
+    
+      <category term="seajs" scheme="http://zengdh.com/tags/seajs/"/>
+    
+      <category term="gulp-seajs-transport" scheme="http://zengdh.com/tags/gulp-seajs-transport/"/>
     
   </entry>
   

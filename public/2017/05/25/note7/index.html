@@ -9,7 +9,7 @@
   <title>前后端分离实践-gulp+express | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="技术栈：gulp+express+browser-sync+seajs+sass+ejs1.前端打包工具：gulp2.express 做中间件和路由配置3.browser-sync 浏览器自动刷新4.seajs 模块化管理js5.sass css预编译6.ejs 模板引擎">
-<meta name="keywords" content="gulp,seajs,前后端分离,express,browser-sync,sass,ejs">
+<meta name="keywords" content="gulp,seajs,sass,前后端分离,express,browser-sync,ejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端分离实践-gulp+express">
 <meta property="og:url" content="http://zengdh.com/2017/05/25/note7/index.html">
@@ -232,6 +232,10 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
         		</li>
       		 
@@ -241,10 +245,6 @@ var _hmt = _hmt || [];
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -328,8 +328,8 @@ var _hmt = _hmt || [];
     </a>
   
   
-    <a href="/2017/05/25/note6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git日常提交步骤-基本命令行</div>
+    <a href="/2017/05/25/note4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gulp 配置（四）---模板篇</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -429,18 +429,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gulp-file-include</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gulp-watch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gulp-connect</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">seajs</a>
               </li>
              
@@ -449,15 +437,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">base64</a>
+                <a href="javascript:void(0)" class="js-tag color5">sass</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">spriter</a>
+                <a href="javascript:void(0)" class="js-tag color2">px3rem</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">坑坑洼洼踩踩踩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gulp-watch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">gulp-connect</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,19 +473,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sass</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">px3rem</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,11 +497,35 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">坑坑洼洼踩踩踩</a>
+                <a href="javascript:void(0)" class="js-tag color4">移动端wap开发</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">移动端wap开发</a>
+                <a href="javascript:void(0)" class="js-tag color3">gulp-file-include</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">base64</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">spriter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nunjucks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">request-promise</a>
               </li>
             
             <div class="clearfix"></div>

@@ -150,33 +150,30 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-note3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
+      <a class="article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
     </h1>
   
 
         
-        <a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+        <a href="/2017/05/25/note3/" class="archive-article-date">
+  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
-<ul>
-<li>gulp安装就不赘述</li>
-</ul>
-<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+        <p>实际开发中，如果每次修改html、sass、js都要手动去执行编译命令，这将是一件很痛苦的事，所以配置一个本地服务，让它实时编译刷新是很必要的。</p>
+<h2 id="gulp-connect"><a href="#gulp-connect" class="headerlink" title="gulp-connect"></a>gulp-connect</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var connect = require(<span class="string">'gulp-connect'</span>);</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/05/25/note/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/25/note3/#more">more >></a>
         
       
 
@@ -194,11 +191,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
         		</li>
       		
 		</ul>
@@ -208,7 +205,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/25/note3/">展开全文 >></a>
         </p>
       
 
@@ -270,11 +267,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -289,6 +286,82 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/25/note2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/25/note/" class="archive-article-date">
+  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
+<ul>
+<li>gulp安装就不赘述</li>
+</ul>
+<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/25/note/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/25/note/">展开全文 >></a>
         </p>
       
 
@@ -395,18 +468,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gulp-file-include</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gulp-watch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gulp-connect</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">seajs</a>
               </li>
              
@@ -415,15 +476,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">base64</a>
+                <a href="javascript:void(0)" class="js-tag color5">sass</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">spriter</a>
+                <a href="javascript:void(0)" class="js-tag color2">px3rem</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">坑坑洼洼踩踩踩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gulp-watch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">gulp-connect</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,19 +512,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">sass</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">px3rem</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,11 +536,35 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">坑坑洼洼踩踩踩</a>
+                <a href="javascript:void(0)" class="js-tag color4">移动端wap开发</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">移动端wap开发</a>
+                <a href="javascript:void(0)" class="js-tag color3">gulp-file-include</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">base64</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">spriter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nunjucks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">request-promise</a>
               </li>
             
             <div class="clearfix"></div>
