@@ -239,10 +239,12 @@ location.href="https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk"
 }else if(isiOS) {
 location.href="https://itunes.apple.com/cn/app/qq/id444934666?mt=8";
 }else {
-location.href="mqqwpa://im/chat?chat_type=wpa&uin="+qqId+"&version=1&src_type=web&web_src=bjhuli.com";
+location.href="https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk";
+//market://details?id=com.tencent.mobileqq 打开跳转应用市场
+//http://app.mi.com/details?id=com.tencent.mobileqq 小米应用市场
 };
 }
 clearTimeout(checkTime);
-},5000);
+},5000);//部分安卓手机弹出QQ有确认操作，不会直接弹出QQ
 location.href = "mqqwpa://im/chat?chat_type=wpa&uin="+qqId+"&version=1&src_type=web&web_src=bjhuli.com";
 ```
