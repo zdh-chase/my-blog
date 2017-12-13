@@ -3,7 +3,7 @@ title: css预编译工具-sass
 tags:
      - sass
 ---
-记录sass使用的日常....
+sass官方地址：<a href="https://www.sass.hk/" target="_blank">https://www.sass.hk/</a>
 
 <!--more-->
 
@@ -80,4 +80,8 @@ $FontSize: 16;
         #{$prefix}#{$property}: $value;
     }
 }
+```
+## 引入mixin
+``` bash
+@import '../mixin/mixin';
 ```
