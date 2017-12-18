@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://zengdh.com">
-  <title>博博博客</title>
+  <title>VUE（五. mock数据渲染及图片懒加载） | 博博博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个彩笔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博博博客">
-<meta property="og:url" content="http://zengdh.com/page/2/index.html">
+  <meta name="description" content="vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:123autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为false,不启动。useEslint：在webpack中使用">
+<meta name="keywords" content="axios,devServer,vue-lazyload">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE（五. mock数据渲染及图片懒加载）">
+<meta property="og:url" content="http://zengdh.com/2017/12/18/note18/index.html">
 <meta property="og:site_name" content="博博博客">
-<meta property="og:description" content="一个彩笔的博客">
+<meta property="og:description" content="vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:123autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为false,不启动。useEslint：在webpack中使用">
+<meta property="og:updated_time" content="2017-12-18T06:05:22.162Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博博博客">
-<meta name="twitter:description" content="一个彩笔的博客">
+<meta name="twitter:title" content="VUE（五. mock数据渲染及图片懒加载）">
+<meta name="twitter:description" content="vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:123autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为false,不启动。useEslint：在webpack中使用">
   
     <link rel="alternative" href="/atom.xml" title="博博博客" type="application/atom+xml">
   
@@ -148,35 +150,62 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-note8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-note18" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/note8/">初探mongodb（一）</a>
+    <h1 class="article-title" itemprop="name">
+      VUE（五. mock数据渲染及图片懒加载）
     </h1>
   
 
         
-        <a href="/2017/06/02/note8/" class="archive-article-date">
-  	<time datetime="2017-06-02T06:56:26.637Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+        <a href="/2017/12/18/note18/" class="archive-article-date">
+  	<time datetime="2017-12-18T02:27:07.490Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>配置：</p>
-<p>1.nodejs（官网地址：<a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>下载安装）<br>2.express，基于nodejs的开发框架-<a href="http://www.expressjs.com.cn/" target="_blank">传送门</a><br>3.mongodb<br>4.mongoose</p>
-        
-          <a class="article-more-a" href="/2017/06/02/note8/#more">more >></a>
-        
+        <p>vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为<span class="literal">false</span>,不启动。</div><div class="line">useEslint：在webpack中使用eslint-loader。有些人可能只想在他们的IDE中使用eslint，所以可以在这里停用eslint-loader。</div><div class="line">showEslintErrorsInOverlay：如果使用eslint-loader，则此选项允许切换浏览器中显示的错误覆盖图中的eslint错误。错误仍然出现在控制台和终端，但不要再打破浏览器的工作流程。notifyOnErrors：将在构建失败时显示操作系统通知。</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="旧版dev-server-js配置本地数据访问："><a href="#旧版dev-server-js配置本地数据访问：" class="headerlink" title="旧版dev-server.js配置本地数据访问："></a>旧版dev-server.js配置本地数据访问：</h2><p>在const app = express()后，const compiler = webpack(webpackConfig)前配置即可：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var appData = require(<span class="string">'../data.json'</span>)</div><div class="line">var data1 = appData.data1</div><div class="line">var data2 = appData.data2</div><div class="line">var apiRoutes = express.Router()</div><div class="line">//post请求</div><div class="line">apiRoutes.post(<span class="string">'/data1'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.json(&#123;</div><div class="line">    errno: 0,</div><div class="line">    data: data1</div><div class="line">  &#125;);</div><div class="line">&#125;)</div><div class="line">//get请求</div><div class="line">apiRoutes.get(<span class="string">'/data2'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.json(&#123;</div><div class="line">    errno: 0,</div><div class="line">    data: data2</div><div class="line">  &#125;);</div><div class="line">&#125;)</div><div class="line">app.use(<span class="string">'/api'</span>,apiRoutes)</div></pre></td></tr></table></figure></p>
+<h2 id="新版webpack-dev-conf-js配置本地数据访问："><a href="#新版webpack-dev-conf-js配置本地数据访问：" class="headerlink" title="新版webpack.dev.conf.js配置本地数据访问："></a>新版webpack.dev.conf.js配置本地数据访问：</h2><p>在const portfinder = require(‘portfinder’)后添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//首先</div><div class="line">const express = require(<span class="string">'express'</span>)</div><div class="line">const app = express()</div><div class="line">var appData = require(<span class="string">'../data.json'</span>)//加载本地数据文件</div><div class="line">var data1 = appData.data1//获取对应的本地数据</div><div class="line">var data2 = appData.data2</div><div class="line">var apiRoutes = express.Router()</div><div class="line">app.use(<span class="string">'/api'</span>, apiRoutes)</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//然后找到devServer,在里面添加</div><div class="line">before(app) &#123;</div><div class="line">  //get请求</div><div class="line">  app.get(<span class="string">'/api/data1'</span>, (req, res) =&gt; &#123;</div><div class="line">    res.json(&#123;</div><div class="line">      errno: 0,</div><div class="line">      data: data1</div><div class="line">    &#125;)</div><div class="line">  &#125;),</div><div class="line">  //post请求</div><div class="line">  app.post(<span class="string">'/api/data2'</span>, (req, res) =&gt; &#123;</div><div class="line">    res.json(&#123;</div><div class="line">      errno: 0,</div><div class="line">      data: data2</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="axios组件数据渲染"><a href="#axios组件数据渲染" class="headerlink" title="axios组件数据渲染"></a>axios组件数据渲染</h2><p>main.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import axios from <span class="string">'axios'</span></div><div class="line">Vue.prototype.<span class="variable">$http</span> = axios</div></pre></td></tr></table></figure></p>
+<p>页面组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  name: <span class="string">'list'</span>,</div><div class="line">  <span class="function"><span class="title">data</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      list: []</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</div><div class="line">    this.getList();</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    <span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      this.<span class="variable">$http</span>.get(<span class="string">'/api/list'</span>).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="axios-post请求参数传递格式问题，改成键值对形式"><a href="#axios-post请求参数传递格式问题，改成键值对形式" class="headerlink" title="axios post请求参数传递格式问题，改成键值对形式"></a>axios post请求参数传递格式问题，改成键值对形式</h2><p>方法一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      var params = new URLSearchParams()</div><div class="line">      params.append(<span class="string">'type'</span>, <span class="string">'1111'</span>);</div><div class="line">      this.<span class="variable">$http</span>.post(<span class="string">'/api/list'</span>, params).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>方法二，引入qs组件格式化数据：<br>main.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import qs from <span class="string">'qs'</span></div><div class="line">Vue.prototype.<span class="variable">$qs</span> = qs</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      const params = &#123;</div><div class="line">        <span class="built_in">type</span>: 2222</div><div class="line">      &#125;</div><div class="line">      this.<span class="variable">$http</span>.post(<span class="string">'/api/list'</span>, this.<span class="variable">$qs</span>.stringify(params)).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><p>引入VueLazyload组件，npm官网地址：<a target="_blank" href="https://www.npmjs.com/package/vue-lazyload">https://www.npmjs.com/package/vue-lazyload</a><br>在main.js引入组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import VueLazyload from <span class="string">'vue-lazyload'</span></div><div class="line"></div><div class="line">Vue.use(VueLazyload, &#123;</div><div class="line">  preLoad: 1.3,</div><div class="line">  error: <span class="string">'dist/error.png'</span>,</div><div class="line">  loading: <span class="string">'dist/loading.gif'</span>,</div><div class="line">  attempt: 1</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>页面组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img v-lazy=<span class="string">"item.img"</span>  /&gt;</div></pre></td></tr></table></figure></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -187,27 +216,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">axios</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">devServer</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mongoose</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">body-parser</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">robomongo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vue-lazyload</a>
         		</li>
       		
 		</ul>
@@ -216,18 +233,74 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/note8/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zengdh.com/2017/12/18/note18/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/06/note17/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VUE（四. axios）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -235,530 +308,10 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-note7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note7/">前后端分离实践-gulp+express</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/05/25/note7/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="技术栈：gulp-express-browser-sync-seajs-sass-ejs"><a href="#技术栈：gulp-express-browser-sync-seajs-sass-ejs" class="headerlink" title="技术栈：gulp+express+browser-sync+seajs+sass+ejs"></a>技术栈：gulp+express+browser-sync+seajs+sass+ejs</h2><p>1.前端打包工具：gulp<br>2.express 做中间件和路由配置<br>3.browser-sync 浏览器自动刷新<br>4.seajs 模块化管理js<br>5.sass css预编译<br>6.ejs 模板引擎</p>
-        
-          <a class="article-more-a" href="/2017/05/25/note7/#more">more >></a>
-        
-      
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前后端分离</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">browser-sync</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note6/">git日常提交步骤-基本命令行</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note6/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-下载代码"><a href="#1-下载代码" class="headerlink" title="1.下载代码"></a>1.下载代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> http//xxxx.git –b dev xxxx_dev_local</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note5/">Gulp 配置（五）---图片篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note5/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>图片整合成雪碧图，几kb的图片转化成base64写入css中，减少http请求。</p>
-<h2 id="gulp-base64"><a href="#gulp-base64" class="headerlink" title="gulp-base64"></a>gulp-base64</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var base64 = require(<span class="string">'gulp-base64'</span>);</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">base64</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spriter</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note4/">Gulp 配置（四）---模板篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note4/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
-<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-file-include</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note3/">Gulp 配置（三）---service篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note3/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实际开发中，如果每次修改html、sass、js都要手动去执行编译命令，这将是一件很痛苦的事，所以配置一个本地服务，让它实时编译刷新是很必要的。</p>
-<h2 id="gulp-connect"><a href="#gulp-connect" class="headerlink" title="gulp-connect"></a>gulp-connect</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var connect = require(<span class="string">'gulp-connect'</span>);</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-watch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gulp-connect</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note2/">Gulp 配置（二）---sass篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note2/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>sass、less、stylus都是css预处理框架，它可以提高开发效率，编写富有表现力的、动态的、健壮的CSS。</p>
-<ul>
-<li>这里选择sass</li>
-</ul>
-<h2 id="gulp-css-task"><a href="#gulp-css-task" class="headerlink" title="gulp css task"></a>gulp css task</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var minifycss = require(<span class="string">'gulp-minify-css'</span>), //压缩css</div><div class="line">    rev = require(<span class="string">'gulp-rev'</span>);                                  //- 对文件名加MD5后缀</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sass</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">px3rem</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-note" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/note/">Gulp 配置（一）---seaJs篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/note/" class="archive-article-date">
-  	<time datetime="2017-05-25T02:50:44.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Gulp.js 是基于 Node.js 构建的，可以建项目并减少频繁的 IO 操作的化构建工具<br>这里我采用 <a href="http://seajs.org/" target="_blank">seajs</a>来管理我的javascript代码，提高JavaScript代码的可读性和清晰度，解决目前JavaScript编程中普遍存在的依赖关系混乱和代码纠缠等问题，方便代码的编写和维护。</p>
-<ul>
-<li>gulp安装就不赘述</li>
-</ul>
-<h2 id="引入seajs"><a href="#引入seajs" class="headerlink" title="引入seajs"></a>引入seajs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"../../src/js/sea.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/25/note/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">gulp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">seajs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gulp-seajs-transport</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/25/note/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -780,8 +333,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

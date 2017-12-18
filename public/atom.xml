@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zengdh.com/"/>
-  <updated>2017-12-06T11:25:20.506Z</updated>
+  <updated>2017-12-18T06:05:22.162Z</updated>
   <id>http://zengdh.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VUE（五. mock数据渲染及图片懒加载）</title>
+    <link href="http://zengdh.com/2017/12/18/note18/"/>
+    <id>http://zengdh.com/2017/12/18/note18/</id>
+    <published>2017-12-18T02:27:07.490Z</published>
+    <updated>2017-12-18T06:05:22.162Z</updated>
+    
+    <content type="html"><![CDATA[<p>vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为<span class="literal">false</span>,不启动。</div><div class="line">useEslint：在webpack中使用eslint-loader。有些人可能只想在他们的IDE中使用eslint，所以可以在这里停用eslint-loader。</div><div class="line">showEslintErrorsInOverlay：如果使用eslint-loader，则此选项允许切换浏览器中显示的错误覆盖图中的eslint错误。错误仍然出现在控制台和终端，但不要再打破浏览器的工作流程。notifyOnErrors：将在构建失败时显示操作系统通知。</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="旧版dev-server-js配置本地数据访问："><a href="#旧版dev-server-js配置本地数据访问：" class="headerlink" title="旧版dev-server.js配置本地数据访问："></a>旧版dev-server.js配置本地数据访问：</h2><p>在const app = express()后，const compiler = webpack(webpackConfig)前配置即可：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var appData = require(<span class="string">'../data.json'</span>)</div><div class="line">var data1 = appData.data1</div><div class="line">var data2 = appData.data2</div><div class="line">var apiRoutes = express.Router()</div><div class="line">//post请求</div><div class="line">apiRoutes.post(<span class="string">'/data1'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.json(&#123;</div><div class="line">    errno: 0,</div><div class="line">    data: data1</div><div class="line">  &#125;);</div><div class="line">&#125;)</div><div class="line">//get请求</div><div class="line">apiRoutes.get(<span class="string">'/data2'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.json(&#123;</div><div class="line">    errno: 0,</div><div class="line">    data: data2</div><div class="line">  &#125;);</div><div class="line">&#125;)</div><div class="line">app.use(<span class="string">'/api'</span>,apiRoutes)</div></pre></td></tr></table></figure></p>
+<h2 id="新版webpack-dev-conf-js配置本地数据访问："><a href="#新版webpack-dev-conf-js配置本地数据访问：" class="headerlink" title="新版webpack.dev.conf.js配置本地数据访问："></a>新版webpack.dev.conf.js配置本地数据访问：</h2><p>在const portfinder = require(‘portfinder’)后添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//首先</div><div class="line">const express = require(<span class="string">'express'</span>)</div><div class="line">const app = express()</div><div class="line">var appData = require(<span class="string">'../data.json'</span>)//加载本地数据文件</div><div class="line">var data1 = appData.data1//获取对应的本地数据</div><div class="line">var data2 = appData.data2</div><div class="line">var apiRoutes = express.Router()</div><div class="line">app.use(<span class="string">'/api'</span>, apiRoutes)</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//然后找到devServer,在里面添加</div><div class="line">before(app) &#123;</div><div class="line">  //get请求</div><div class="line">  app.get(<span class="string">'/api/data1'</span>, (req, res) =&gt; &#123;</div><div class="line">    res.json(&#123;</div><div class="line">      errno: 0,</div><div class="line">      data: data1</div><div class="line">    &#125;)</div><div class="line">  &#125;),</div><div class="line">  //post请求</div><div class="line">  app.post(<span class="string">'/api/data2'</span>, (req, res) =&gt; &#123;</div><div class="line">    res.json(&#123;</div><div class="line">      errno: 0,</div><div class="line">      data: data2</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="axios组件数据渲染"><a href="#axios组件数据渲染" class="headerlink" title="axios组件数据渲染"></a>axios组件数据渲染</h2><p>main.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import axios from <span class="string">'axios'</span></div><div class="line">Vue.prototype.<span class="variable">$http</span> = axios</div></pre></td></tr></table></figure></p>
+<p>页面组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">  name: <span class="string">'list'</span>,</div><div class="line">  <span class="function"><span class="title">data</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &#123;</div><div class="line">      list: []</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="function"><span class="title">mounted</span></span>() &#123;</div><div class="line">    this.getList();</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    <span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      this.<span class="variable">$http</span>.get(<span class="string">'/api/list'</span>).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="axios-post请求参数传递格式问题，改成键值对形式"><a href="#axios-post请求参数传递格式问题，改成键值对形式" class="headerlink" title="axios post请求参数传递格式问题，改成键值对形式"></a>axios post请求参数传递格式问题，改成键值对形式</h2><p>方法一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      var params = new URLSearchParams()</div><div class="line">      params.append(<span class="string">'type'</span>, <span class="string">'1111'</span>);</div><div class="line">      this.<span class="variable">$http</span>.post(<span class="string">'/api/list'</span>, params).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>方法二，引入qs组件格式化数据：<br>main.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import qs from <span class="string">'qs'</span></div><div class="line">Vue.prototype.<span class="variable">$qs</span> = qs</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">getList</span></span>() &#123;</div><div class="line">      const params = &#123;</div><div class="line">        <span class="built_in">type</span>: 2222</div><div class="line">      &#125;</div><div class="line">      this.<span class="variable">$http</span>.post(<span class="string">'/api/list'</span>, this.<span class="variable">$qs</span>.stringify(params)).then(res =&gt; &#123;</div><div class="line">        this.list = res.data.result;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><p>引入VueLazyload组件，npm官网地址：<a target="_blank" href="https://www.npmjs.com/package/vue-lazyload">https://www.npmjs.com/package/vue-lazyload</a><br>在main.js引入组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import VueLazyload from <span class="string">'vue-lazyload'</span></div><div class="line"></div><div class="line">Vue.use(VueLazyload, &#123;</div><div class="line">  preLoad: 1.3,</div><div class="line">  error: <span class="string">'dist/error.png'</span>,</div><div class="line">  loading: <span class="string">'dist/loading.gif'</span>,</div><div class="line">  attempt: 1</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>页面组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img v-lazy=<span class="string">"item.img"</span>  /&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;vue本地数据请求配置，最新版vue-webpack-template去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替，同时更新了config/index.js开发模式dev下几个配置:&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;autoOpenBrowser：设置启动dev服务器，打开一个新的浏览器选项卡。默认为&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,不启动。&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;useEslint：在webpack中使用eslint-loader。有些人可能只想在他们的IDE中使用eslint，所以可以在这里停用eslint-loader。&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;showEslintErrorsInOverlay：如果使用eslint-loader，则此选项允许切换浏览器中显示的错误覆盖图中的eslint错误。错误仍然出现在控制台和终端，但不要再打破浏览器的工作流程。notifyOnErrors：将在构建失败时显示操作系统通知。&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="axios" scheme="http://zengdh.com/tags/axios/"/>
+    
+      <category term="devServer" scheme="http://zengdh.com/tags/devServer/"/>
+    
+      <category term="vue-lazyload" scheme="http://zengdh.com/tags/vue-lazyload/"/>
+    
+  </entry>
   
   <entry>
     <title>VUE（四. axios）</title>
@@ -497,39 +533,6 @@
   </entry>
   
   <entry>
-    <title>Gulp 配置（四）---模板篇</title>
-    <link href="http://zengdh.com/2017/05/25/note4/"/>
-    <id>http://zengdh.com/2017/05/25/note4/</id>
-    <published>2017-05-25T02:50:44.876Z</published>
-    <updated>2017-05-25T02:50:44.876Z</updated>
-    
-    <content type="html"><![CDATA[<p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
-<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
-<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>over</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。&lt;/p&gt;
-&lt;h2 id=&quot;gulp-file-include&quot;&gt;&lt;a href=&quot;#gulp-file-include&quot; class=&quot;headerlink&quot; title=&quot;gulp-file-include&quot;&gt;&lt;/a&gt;gulp-file-include&lt;/h2&gt;&lt;h4 id=&quot;需要引入的依赖&quot;&gt;&lt;a href=&quot;#需要引入的依赖&quot; class=&quot;headerlink&quot; title=&quot;需要引入的依赖&quot;&gt;&lt;/a&gt;需要引入的依赖&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fileinclude  = require(&lt;span class=&quot;string&quot;&gt;&#39;gulp-file-include&#39;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
-    
-      <category term="gulp-file-include" scheme="http://zengdh.com/tags/gulp-file-include/"/>
-    
-  </entry>
-  
-  <entry>
     <title>git日常提交步骤-基本命令行</title>
     <link href="http://zengdh.com/2017/05/25/note6/"/>
     <id>http://zengdh.com/2017/05/25/note6/</id>
@@ -598,6 +601,39 @@
       <category term="base64" scheme="http://zengdh.com/tags/base64/"/>
     
       <category term="spriter" scheme="http://zengdh.com/tags/spriter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gulp 配置（四）---模板篇</title>
+    <link href="http://zengdh.com/2017/05/25/note4/"/>
+    <id>http://zengdh.com/2017/05/25/note4/</id>
+    <published>2017-05-25T02:50:44.876Z</published>
+    <updated>2017-05-25T02:50:44.876Z</updated>
+    
+    <content type="html"><![CDATA[<p>提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。</p>
+<h2 id="gulp-file-include"><a href="#gulp-file-include" class="headerlink" title="gulp-file-include"></a>gulp-file-include</h2><h4 id="需要引入的依赖"><a href="#需要引入的依赖" class="headerlink" title="需要引入的依赖"></a>需要引入的依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var fileinclude  = require(<span class="string">'gulp-file-include'</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>新建一个task:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    // 适配src中所有文件夹下的所有html，排除src下的include文件夹中html</div><div class="line">    gulp.src([<span class="string">'./src/view/*.html'</span>,<span class="string">'!./src/view/common/*.html'</span>])</div><div class="line">        .pipe(fileinclude(&#123;</div><div class="line">          prefix: <span class="string">'@@'</span>,</div><div class="line">          basepath: <span class="string">'@file'</span></div><div class="line">        &#125;))</div><div class="line">    .pipe(gulp.dest(<span class="string">'./build/view/'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>gulp task已经写好了，这里新建两个公共html页面，header.html和footer.html</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">header.html</div><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line"></div><div class="line">footer.html</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h2 id="引入公共组件"><a href="#引入公共组件" class="headerlink" title="引入公共组件"></a>引入公共组件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@@include(<span class="string">'common/header.html'</span>)</div><div class="line">   &lt;div&gt;主内容&lt;/div&gt;</div><div class="line">@@include(<span class="string">'common/footer.html'</span>)</div></pre></td></tr></table></figure>
+<h2 id="编译后生产环境下的html"><a href="#编译后生产环境下的html" class="headerlink" title="编译后生产环境下的html"></a>编译后生产环境下的html</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;这是头部&lt;/div&gt;</div><div class="line">&lt;div&gt;主内容&lt;/div&gt;</div><div class="line">&lt;div&gt;这是页脚&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>至此完成了html模板复用，结合上一章的自动刷新，更新下watch，将fileinclude放入watch中监听html，并刷新<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">  gulp.watch(paths.html,[<span class="string">'fileinclude'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scripts,[<span class="string">'mergeScripts'</span>,<span class="string">'html'</span>]);</div><div class="line">  gulp.watch(paths.scss,[<span class="string">'mergeScss'</span>,<span class="string">'html'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>over</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;提取公共html页面为实际开发提供了便捷，这里引入gulp-file-include做公共模块复用。&lt;/p&gt;
+&lt;h2 id=&quot;gulp-file-include&quot;&gt;&lt;a href=&quot;#gulp-file-include&quot; class=&quot;headerlink&quot; title=&quot;gulp-file-include&quot;&gt;&lt;/a&gt;gulp-file-include&lt;/h2&gt;&lt;h4 id=&quot;需要引入的依赖&quot;&gt;&lt;a href=&quot;#需要引入的依赖&quot; class=&quot;headerlink&quot; title=&quot;需要引入的依赖&quot;&gt;&lt;/a&gt;需要引入的依赖&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fileinclude  = require(&lt;span class=&quot;string&quot;&gt;&#39;gulp-file-include&#39;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="gulp" scheme="http://zengdh.com/tags/gulp/"/>
+    
+      <category term="gulp-file-include" scheme="http://zengdh.com/tags/gulp-file-include/"/>
     
   </entry>
   
