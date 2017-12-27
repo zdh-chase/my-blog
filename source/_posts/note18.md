@@ -1,5 +1,5 @@
 ---
-title: VUE（五. mock数据渲染及图片懒加载）
+title: VUE（五. mock数据渲染、图片懒加载、nprogress进度条）
 tags:
      - axios
      - devServer
@@ -138,4 +138,30 @@ Vue.use(VueLazyload, {
 页面组件
 ``` bash
 <img v-lazy="item.img"  />
+```
+## nprogress进度条
+
+npm地址： <a href="https://www.npmjs.com/package/nprogress" target="_blank">https://www.npmjs.com/package/nprogress</a>
+
+安装：
+``` bash
+$ bower install --save nprogress
+$ npm install --save nprogress
+```
+
+路由跳转中加入顶部进度条过渡
+man.js
+``` bash
+import router from './router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+router.beforeEach((to,from,next) => {
+  NProgress.start()
+  next()
+})
+router.afterEach(() => {
+  NProgress.done();
+})
+
 ```

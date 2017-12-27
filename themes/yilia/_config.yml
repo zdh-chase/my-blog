@@ -88,7 +88,7 @@ slider:
 smart_menu:
   innerArchive: '所有文章'
   # friends: '友链'
-  aboutme: '关于我'
+  # aboutme: '关于我'
 
 friends:
   一个博客: https://blog.imguan.com/
